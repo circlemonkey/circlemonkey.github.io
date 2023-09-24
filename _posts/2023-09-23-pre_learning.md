@@ -121,7 +121,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 ### 벡터와 스칼라의 곱
 - 벡터 $\vec{v}$에 크기만을 가진 값 스칼라 c를 곱하면 방향은 그대로이고 크기는 c배가 된 벡터이다.
-- 벡터 $\vec{v}$의 크기는 벡터 $|\vec{v}|$으로 표기한다.
+- 벡터 $\vec{v}$의 크기는 벡터 $|\vec{v}|$ 으로 표기한다.
 - c가 0이거나 벡터 $\vec{v}$의 크기가 0이었다면 둘을 곱하면 크기가 0인 벡터가 되고 이를 ***영벡터***라고 한다.
 
 ### 벡터의 성질
@@ -145,6 +145,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     ⚡ 벡터공간이란, 벡터들의 집합으로 벡터들 사이에 합과 스칼라 곱이 정의된 공간을 뜻한다.
     ⚡ 벡터들의 선형결합에 대하여 닫히 공간이어야 한다.
     ⚡ 닫힌 공간이란 벡터공간에 속한 임의의 벡터들의 선형결합도 역시 주어진 벡터공간에 속하는 것을 뜻한다.
+    
 > 🔥 실수들의 집합을 R이라고 하자. $R^n$이란 요소 n개로 이루어진 열(벡터)(n × 1행렬)들의 집합을 말한다.
 <br>🔥 이때, n을 차원이라고 하고 n=1(선), n=2(면), n=3(공간)으로 표현한다.
 <br>🔥 실수는 또 다른 말로 스칼라라고 한다.
@@ -223,6 +224,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - 지도 학습(Supervised Learning)의 한 유형으로, 입력 데이터를 두 개 이상의 고정된 범주나 클래스로 분류하는 작업입니다.
 - 스팸 메일 필터링(스팸인지 아닌지), 이미지 인식(이미지가 어떤 객체를 나타내는지) 등이 있습니다.
 - [다음과 같은 상황에서 사용]
+  
       ⚡ 이진 분류(Binary Classification): 출력 클래스가 두 개인 경우를 말합니다. 예를 들어, 스팸 메일 필터링에서 메일이 스팸인지 아닌지를 결정하는 것은 이진 분류 문제입니다.
       ⚡ 다중 클래스 분류(Multiclass Classification): 출력 클래스가 세 개 이상인 경우를 말합니다. 예를 들어, 손으로 쓴 숫자 이미지(0~9)을 인식하여 해당 숫자를 결정하는 것은 다중 클래스 분류 문제입니다.
       ⚡ 다중 레이블 분류(Multilabel Classification): 각 입력 샘플이 여러개의 클래스 레이블을 가질 수 있는 경우입니다. 예를 들어, 한 영화가 여러 장르(액션, 코미디, 드라마 등)에 속할 수 있습니다.
@@ -233,6 +235,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - 지도 학습의 한 유형으로, 입력 데이터에 대한 연속적인 출력 값을 예측하는 작업입니다.
 - 주택 가격 예측(주어진 특성에 따른 집값), 주식 가격 예측 등이 회귀 문제에 해당합니다.
 - [다음과 같은 상황에서 사용]
+
       ⚡ 단일 회귀(Simple Regression): 하나의 독립 변수(입력 특성)를 사용하여 종속 변수(출력 값)를 예측합니다. 예를 들어, 집의 크기에 따른 집값을 예측하는 것이 단일 회귀 문제가 될 수 있습니다.
       ⚡ 다중 회귀(Multiple Regression): 두 개 이상의 독립 변수를 사용하여 종속 변수를 예측합니다. 예를 들어, 집의 크기와 위치에 따른 집값을 예측하는 것이 다중 회귀 문제가 될 수 있습니다.
 - [알고리즘 종류]
@@ -243,6 +246,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - 비슷한 특성을 갖는 데이터 포인트들을 같은 클러스터로 그룹핑합니다.
 - 고객 세분화(Customer Segmentation), 이미지 분할(Image Segmentation) 등에서 사용됩니다.
 - [다음과 같은 상황에서 사용]
+  
       ⚡ 시장 세분화(Market Segmentation): 고객들을 그들의 구매 패턴, 소비 행동, 개인적 특성 등에 따라 여러 그룹으로 나눕니다. 이를 통해 각 세그먼트에 맞춤형 마케팅 전략을 개발할 수 있습니다.
       ⚡ 사회 네트워크 분석(Social Network Analysis): 소셜 네트워크에서 커뮤니티를 탐지하는 데 사용됩니다.
       ⚡ 이미지 분할(Image Segmentation): 이미지 내에서 비슷한 픽셀을 그룹핑하여 이미지를 여러 부분으로 나눕니다.
@@ -266,6 +270,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     ⚡ 다른 변수들은 상수로 간주되며 그 값이 변하지 않는다고 가정.
     ⚡ 편미분은 기울기(gradient), 자코비안(Jacobian), 해시안(Hessian) 등과 같이 벡터나 매트릭스 형태의 도함수(derivative)를 구하는데 사용.
     ⚡ 최적화 문제나 딥러닝에서 경사 하강법(gradient descent) 등을 구현할 때 중요한 개념.
+
 - 두 변수 x와 y에 대한 함수 f(x, y)
 <br> - x에 대한 f의 편미분은 y를 상수로 간주하고 f를 x만의 함수로 생각하여 미분.
 <br> $∂f \over ∂x$ 또는 $f_x$
@@ -282,6 +287,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 ## feature engineering이란?
     ⚡ 머신러닝 모델을 위한 데이터를 준비하는 과정.
     ⚡ 입력 데이터의 특성(Features)을 선택, 추출, 생성하여 머신러닝 알고리즘이 이해하고 사용할 수 있는 형태로 변환하는 작업을 포함.
+
 - Feature Engineering의 여러 가지
 >🔥 Feature Selection: 가장 유익한 특성들을 선택하는 과정입니다. 모든 특성이 유용하지 않으며, 일부는 노이즈를 추가하거나 오버피팅(Overfitting)을 초래할 수 있습니다.
 <br>🔥 Feature Extraction: 기존의 원시 데이터에서 새로운 특성을 추출하는 과정입니다. 예를 들어, 날짜에서 요일이나 월 등의 정보를 추출하거나, 텍스트 데이터에서 주요 단어나 구문을 추출할 수 있습니다.
@@ -295,6 +301,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 ### Linear Classifier
     ⚡ 입력 특성의 선형 조합을 기반으로 클래스를 예측하는 분류 모델.
     ⚡ 선형 분류기는 결정 경계(Decision Boundary)가 선, 평면 또는 초평면 형태로 표현되며, 이를 기준으로 데이터를 두 개 이상의 클래스로 분리
+
 - 알고리즘 종류
 > 🔥 로지스틱 회귀(Logistic Regression): 로지스틱 회귀는 선형 함수를 사용하여 클래스에 속할 확률을 계산하고, 그 확률에 따라 적절한 클래스로 분류합니다. 로지스틱 회귀의 출력은 시그모이드 함수(Sigmoid Function)를 거치게 되어 0과 1 사이의 값으로 변환되며, 이 값을 확률로 해석할 수 있습니다.
 <br>🔥 서포트 벡터 머신(Support Vector Machines, SVM): SVM은 각 클래스 사이의 마진(Margin), 즉 결정 경계와 가장 가까운 데이터 포인트들 사이의 거리가 최대가 되도록 학습합니다. 이렇게 하면 모델이 일반화(generalization)능력을 향상시킬 수 있습니다.
@@ -310,6 +317,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 ### Linear Regression
     ⚡ 통계학과 머신러닝에서 널리 사용되는 예측 모델.
     ⚡ 종속 변수 y와 하나 이상의 독립 변수 (또는 설명 변수) X 간의 선형 관계를 모델링.
+
 - $y = β_0 + β_1X_1 + β_2X_2 + ... + β_nX_n + ε$
 <br> ☝ $y$ : 종속 변수, 예측하려는 대상
 <br> ☝ $X_1, X_2, ..., X_n$ : 독립 변수, 예측에 사용되는 특성
@@ -339,6 +347,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 ### Decision Tree란?
     ⚡ 지도 학습 알고리즘 중 하나로, 데이터를 분석하여 이들 사이에 존재하는 패턴을 예측 가능한 규칙들의 조합으로 나타내는데 사용.
     ⚡  규칙들의 구조가 트리 구조와 유사하기 때문에 결정 트리라고 부름.
+
 - 결정 트리 학습 과정
 > 🔥 트리 생성: 전체 데이터셋을 대상으로 최적의 분할 기준을 찾아서 첫 번째 노드(루트 노드)를 생성합니다.
 <br> 🔥 분할(Division): 선택된 기준에 따라 데이터셋을 두 개 이상의 서브셋(subset)으로 분할합니다.
@@ -349,6 +358,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 ### CART란?
     ⚡ 결정 트리 알고리즘의 한 종류로, 분류(Classification)와 회귀(Regression) 문제 모두에 적용 가능.
     ⚡ 이진 트리(binary tree) 구조를 가지며, 각 노드에서의 분할은 하나의 피처에 대해 이진 분할을 수행.
+
 - CART의 학습원리
 > 🔥 데이터 준비: CART 모델은 입력 데이터와 해당하는 출력 값을 필요로 합니다. 입력 데이터는 여러 개의 독립 변수(피처)로 구성되어 있으며, 출력 값은 예측하려는 종속 변수(타겟)입니다.
 <br> 🔥 트리 구조 생성: CART 알고리즘은 재귀적 분할을 사용하여 트리를 구성합니다. 초기에는 전체 데이터셋이 루트 노드로 사용됩니다.
@@ -365,6 +375,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 ### sklearn
     ⚡ 대표적인 머신러닝 라이브러리 중 하나.
     ⚡ 다양한 머신러닝 알고리즘을 제공하며, 이를 사용해 모델 학습, 검증, 예측 등의 작업을 수행.
+
 - 회귀(Regression), 분류(Classification), 서포트 벡터 머신(SVM), 결정 트리(Decision Trees), 랜덤 포레스트(Random Forests) 등 다양한 지도 학습 알고리즘이 구현.
 - 클러스터링(Clustering), 주성분 분석(PCA), 가우시안 혼합 모델(Gaussian Mixture Models) 등 다양한 비지도 학습 알고리즘이 구현.
 - 피처 스케일링(Feature Scaling), 정규화(Normalization), 인코딩(Encoding) 등 데이터 전처리 작업에 필요한 도구들을 제공.
@@ -373,6 +384,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 ### fit 함수의 사용법
 - fit 함수 : 주어진 데이터에 대해 머신러닝 모델을 학습시키는 역할.
+
 ```python
 from sklearn.linear_model import LinearRegression
 from sklearn.datasets import load_iris
@@ -388,12 +400,14 @@ model = LinearRegression()
 # Train the model with data (X: features, y: target)
 model.fit(X, y)
 ```
+
 <pre>
 LinearRegression()
 </pre>
 
 ### predict 함수의 사용법
 - predict 함수 : 학습된 모델을 사용하여 새로운 데이터에 대한 예측값을 생성하는 역할을 합니다.
+
 ```python
 # Assume we have new iris samples
 X_new = [[5.1, 3.5, 1.4, 0.2],
@@ -410,6 +424,7 @@ predictions = model.predict(X_new)
 
 print(predictions)
 ```
+
 <pre>
 [-0.08254936  1.30098933]
 </pre>
