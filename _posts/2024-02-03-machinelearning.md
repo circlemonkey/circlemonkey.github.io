@@ -1,10 +1,11 @@
 ---
 layout: single
-title:  "jupyter notebook 변환하기!"
-categories: coding
-tag: [python, blog, jekyll]
+title:  "머신러닝의 모든 것 (추가중)"
+categories: machinelearning
+tag: [python, machinelearning]
 toc: true
 author_profile: false
+use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용 유무)
 ---
 
 <head>
