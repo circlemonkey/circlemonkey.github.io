@@ -1,10 +1,11 @@
 ---
 layout: single
-title:  "jupyter notebook 변환하기!"
-categories: coding
-tag: [python, blog, jekyll]
+title:  "딥러닝의 모든 것 (추가중)"
+categories: deeplearning
+tag: [python, deeplearning]
 toc: true
 author_profile: false
+use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용 유무)
 ---
 
 <head>
