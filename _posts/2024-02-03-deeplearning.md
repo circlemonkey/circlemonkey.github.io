@@ -183,7 +183,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
         </figure>
 
     - ✅ **Output** : $\hat{y}$, 예측값
--$...$
 
 ## 2) Multi-Layer Perceptron
 - 훌륭한 non-linear 모델
@@ -258,8 +257,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - 다중 클래스 분류 문제에서는 CCE를 주로 사용
     - Cross-Entropy Loss를 사용
 
-- $...$
-
 ## 5) back propagation
 - 손실 함수의 결과를 이용하여 각 층의 가중치와 편향을 업데이트
 - 오차를 역으로 전파하여 각 층의 가중치에 대한 변화량을 계산하고, 경사 하강법(Gradient Descent)을 사용하여 가중치를 조정
@@ -282,8 +279,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 </figure>
     - 각 가중치의 Error 값에 대한 기여도 = $ {∂E} \over {∂W}$ = Error를 가중치로 편미분한 값
     - 가중치(W)의 업데이트는 기여도에 Learning Rate 값을 곱한 값을 빼준다.
-    - $W_{new} = W_{old} - (LR)𝖷{{∂E} \over {∂W}}$
-- $...$
 
 ## 6) Training
 - Gradient Descent
