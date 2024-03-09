@@ -168,20 +168,27 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - ✅ **Sum** : $x_1w_1 + ... + x_nw_n + b$, Linear Model.
 
     - ✅ **Activation Function** : $f(x)$, Sum값이 x값으로 들어옴, 활성함수.
+
         - 주요 목적은 비선형성(non-linearity)을 인공 신경망에 도입하는 것.
+
         - 활성화 함수는 또한 신경망의 출력 값을 특정 범위로 조절.
+
         - 인공 신경망의 각 뉴런에서 입력 값과 가중치의 곱을 합산한 후(가중 합), 그 결과에 적용.
+
         - 대표적인 활성화 함수로는 시그모이드, ReLU, 하이퍼볼릭 탄젠트
+        
         - Sigmoid
         <figure style="text-align: center;">
             <img src="https://mlnotebook.github.io/img/transferFunctions/sigmoid.png" width="300" height="300">
             <figcaption style="font-size: 10px; color: gray;">출처) https://dacon.io/en/forum/406091</figcaption>
         </figure>
+        
         - ReLU
         <figure style="text-align: center;">
             <img src="https://blog.kakaocdn.net/dn/vgJna/btqQzRGmwcO/TK3KTMlz4CYag8rBTKfYkK/img.png" width="300" height="300">
             <figcaption style="font-size: 10px; color: gray;">출처) https://limitsinx.tistory.com/40</figcaption>
         </figure>
+        
         - 하이퍼볼릭 탄젠트(tanh)
         <figure style="text-align: center;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Hyperbolic_Tangent.svg/2560px-Hyperbolic_Tangent.svg.png" width="300" height="300">
@@ -197,10 +204,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - 인공 신경망의 한 종류로, 입력층, 은닉층, 출력층의 세 부분으로 구성
 
 - 세 부분은 모두 인공 뉴런(또는 노드)으로 이루어져 있으며, 각 뉴런은 다른 뉴런과 연결
-<figure style="text-align: center;">
-    <img src="https://www.dtreg.com/uploaded/pageimg/MLFNwithWeights.jpg" width="500" height="300" alt="None">
-    <figcaption style="font-size: 10px; color: gray;">출처) https://ailephant.com/glossary/multilayer-perceptron/</figcaption>
-</figure>
 
 - 입력층(Input Layer): 입력 데이터가 신경망으로 들어오는 부분
 
@@ -235,9 +238,13 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 </figure>
 
     - 딥러닝에서 **다중 클래스 분류 문제**에서 주로 사용되는 활성화 함수(Activation Function)
+
     - 모델의 출력을 클래스별 확률 분포로 변환하는 역할
+
     - Softmax function은 **입력값을 지수 함수(exp)로 변환**하고, **모든 클래스에 대한 지수 함수 값의 합으로 나누어** 각 클래스의 확률을 계산
+
     - Softmax function을 통해 각 클래스의 확률을 계산하면, **가장 확률이 높은 클래스를 선택할 수 있음**
+
     - Softmax function을 통과한 모든 output 값들의 총합은 1이됨
 
 - 🔥 Cross Entropy
@@ -256,17 +263,23 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 </figure>
 
     - 공식 : $H(p,q) = -∑_{i=1}^{n}p(x_i)log(q(x_i))$
+
     - $p(x_i)$ = 실제 예측 확률 분포, Softmax Function를 사용하여 나온 확률 분포 값을 one-hot encoding한 값
         - [0, 1, 0, 0, 0]
+
     - $q(x_i)$ = 계산한 예측 확률 분포, Softmax Function를 사용하여 나온 확률 분포 값
         - [0.02, 0.90, 0.05, 0.01, 0.02]
+
     - $CE = -(0ˣlog(0.02) + 1ˣlog(0.90) + 0ˣlog(0.05) + 0ˣlog(0.01) + 0ˣlog(0.02)) = 0.1053$
     
     <figure style="text-align: center;">
         <img src="https://i.namu.wiki/i/NE-z84UY1NUg_ASi6ExcveUWxeoWJJHpybv2gY5frfww_fqLLwjYnh_fPvgRXgAcVptAek0PX15SkexkW5e7OA.webp" width="300" height="200">
     </figure>
+
     - 실제 레이블 확률 = 1, 예측 확률 = 0 ----> CE = -inf 값이 출력
+
     - 실제 레이블 확률 = 1, 예측 확률 = 1 ----> CE = 0 (아주 이상적인 값)
+
     - 두 분포의 차이가 클수록 크로스 엔트로피 값은 크게 나타나며, **두 분포가 일치할 때 최소값**을 가짐
 
 - 🔥 이진 교차 엔트로피(Binary Cross-Entropy)
@@ -302,6 +315,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 </figure>
 
     - 각 가중치의 Error 값에 대한 기여도 = $ {∂E} \over {∂W}$ = Error를 가중치로 편미분한 값
+
     - 가중치(W)의 업데이트는 기여도에 Learning Rate 값을 곱한 값을 빼준다.
 
 ## 6) Training
@@ -309,16 +323,20 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
   - full-batch
   - **모든 데이터**를 학습에 사용
   - 메모리가 아주 많이 소요
+
 - Stochastic Gradient Descent
    - mini-batch
    - **일부 데이터**를 학습에 사용
    - 메모리 절약 가능
+
 - Epoch
   - 전체 훈련 데이터셋을 한 번 모두 사용하여 학습하는 단위를 의미
   - 에포크가 너무 크면 모델이 훈련 데이터에 과적합(overfitting)될 수 있으므로 주의해야 함
+
 - Batch Size
   - 한 번의 업데이트 단계에서 처리되는 데이터 샘플의 수
   - Batch Size는 일반적으로 2^n을 사용 : GPU의 가성비를 높여주는 숫자
+
 - e.g.
   - input 데이터 개수 : 10,000이라고 가정
   - batch_size : 100이라고 가정
@@ -387,7 +405,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
         <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*BwNCDOi_0BF5Isrt.png" width="350" height="250">
 
-        <figcaption style="font-size: 0.1em; color: gray;">출처) https://medium.com/@miyachan84/%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks-5db5c7cb91dc</figcaption>
+        <figcaption style="font-size: 10px; color: gray;">출처) https://medium.com/@miyachan84/%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks-5db5c7cb91dc</figcaption>
 
     </figure>
 
@@ -411,7 +429,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
         <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*VHOUViL8dHGfvxCsswPv-Q.png" width="350" height="250">
 
-        <figcaption style="font-size: 0.1em; color: gray;">출처) https://medium.com/swlh/fully-connected-vs-convolutional-neural-networks-813ca7bc6ee5</figcaption>
+        <figcaption style="font-size: 10px; color: gray;">출처) https://medium.com/swlh/fully-connected-vs-convolutional-neural-networks-813ca7bc6ee5</figcaption>
 
     </figure>
 
@@ -423,7 +441,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
     <img src="https://miro.medium.com/v2/resize:fit:1400/0*u8uSPvkagjmnxiJZ.jpeg" width="500" height="300">
 
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://medium.com/@miyachan84/%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks-5db5c7cb91dc</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://medium.com/@miyachan84/%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks-5db5c7cb91dc</figcaption>
 
 </figure>
 
@@ -540,7 +558,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
             <img src="https://i.imgur.com/mHfZYPQ.png" width="350" height="200">
 
-            <figcaption style="font-size: 0.1em; color: gray;">출처) https://velog.io/@lighthouse97/ResNet%EC%9D%98-%EC%9D%B4%ED%95%B4</figcaption>
+            <figcaption style="font-size: 10px; color: gray;">출처) https://velog.io/@lighthouse97/ResNet%EC%9D%98-%EC%9D%B4%ED%95%B4</figcaption>
 
         </figure>
 
@@ -554,13 +572,9 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
         <img src="https://pytorch.kr/assets/images/resnet.png" width="500" height="300">
 
-        <figcaption style="font-size: 0.1em; color: gray;">출처) https://pytorch.kr/hub/pytorch_vision_resnet/</figcaption>
+        <figcaption style="font-size: 10px; color: gray;">출처) https://pytorch.kr/hub/pytorch_vision_resnet/</figcaption>
 
     </figure>
-
-
-
--$...$
 
 
 ## 2) RNN
@@ -571,11 +585,9 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
     <img src="https://velog.velcdn.com/images%2Fyuns_u%2Fpost%2Fccbb28ea-fa08-4d23-804e-419e6f578e4b%2Fimage.png" width="700" height="200">
 
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://velog.io/@yuns_u/%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9DRNN-Recurrent-Neural-Network</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://velog.io/@yuns_u/%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9DRNN-Recurrent-Neural-Network</figcaption>
 
 </figure>
-
-
 
     - RNN = Recurrent Neural Network
 
@@ -629,7 +641,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
             <img src="http://i.imgur.com/TIdBDTJ.png" width="500" height="300">
 
-            <figcaption style="font-size: 0.1em; color: gray;">출처) https://ratsgo.github.io/natural%20language%20processing/2017/03/09/rnnlstm/</figcaption>
+            <figcaption style="font-size: 10px; color: gray;">출처) https://ratsgo.github.io/natural%20language%20processing/2017/03/09/rnnlstm/</figcaption>
 
         </figure>
 
@@ -651,7 +663,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
         <figure style="text-align: center;">
 
-            <img src="https://wikidocs.net/images/page/22886/rnn_image4_ver2.PNG" width="150" height="200">
+            <img src="https://wikidocs.net/images/page/22886/rnn_image4_ver2.PNG" width="150" height="100">
 
         </figure>
 
@@ -659,7 +671,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
             <img src="https://wikidocs.net/images/page/22886/rnn_images4-5.PNG" width="500" height="180">
 
-            <figcaption style="font-size: 0.1em; color: gray;">출처) https://wikidocs.net/22886</figcaption>
+            <figcaption style="font-size: 10px; color: gray;">출처) https://wikidocs.net/22886</figcaption>
 
         </figure>
 
@@ -691,7 +703,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
         <img src="http://i.imgur.com/hEtvXnN.png" width="600" height="400">
 
-        <figcaption style="font-size: 0.1em; color: gray;">출처) https://www.goldenplanet.co.kr/our_contents/blog?number=857&pn=</figcaption>
+        <figcaption style="font-size: 10px; color: gray;">출처) https://www.goldenplanet.co.kr/our_contents/blog?number=857&pn=</figcaption>
 
     </figure>
 
@@ -734,36 +746,20 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - 🔥 RNN의 한계점
 
     - 1) 병렬화 불가능
-
     <br> - 벡터가 순차적으로 입력
-
     <br> - sequential 데이터 처리는 가능하게 해주지만,
-
     <br> - GPU 연산의 장점인 병렬화가 불가능
 
-    
-
-    - 2) 기울기 폭발(exploding Gradient), 기울기 소실(Vanashing Gradient)
-
+    - 2) 기울기 폭발(exploding Gradient), 기울기 소실(Vanashing Gradient
     <br> - 역전파 과정에서 치명적인 문제 발생
-
     <br> - 역전파 과정에서 곱해주는 값이 1미만일 때, n제곱이 된다면 역전파 정보가 거의 전달되지않음
-
     <br> **= 기울기 소실**
-
     <br> - 역전파 과정에서 곱해주는 값이 1초과일 때, n제곱이 된다면 역전파 정보가 거의 과하게전달
-
     <br> **= 기울기 폭발**
-
-
 
 - 🔥 One to Many
 
-
-
 - 🔥 Many to One
-
-
 
 - 🔥 Many to Many
 
@@ -772,9 +768,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - sos : start of sentense
 
     - eos : end of sentense
-
-
-
 
 
 ### ① LSTM
@@ -789,7 +782,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
     <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F999F603E5ACB86A005" width="500" height="300">
 
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://dgkim5360.tistory.com/entry/understanding-long-short-term-memory-lstm-kr</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://dgkim5360.tistory.com/entry/understanding-long-short-term-memory-lstm-kr</figcaption>
 
 </figure>
 
@@ -800,28 +793,18 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - 셀 상태(Cell State)
 
     <figure style="text-align: center;">
-
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99CB87505ACB86A00F" width="500" height="200">
-
     </figure>
-
-
 
         - 셀 상태는 이전 시간 단위에서 현재 시간 단위로 전달되며, 장기적인 정보를 저장하는 역할
 
         - [Cell State는 마치 컨베이어 벨트]
-
             - $C_{t-1}$ ---------------------$C_t$---------------------$> $C_{t+1}$
 
         - [Cell State는 두 번의 변화를 겪음]
-
             <figure style="text-align: center;">
-
                 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F997589405ACB86A00C" width="500" height="200">
-
             </figure>
-
-
 
             - 망각게이트의 출력값($f_t$)은 곱하기
 
@@ -834,137 +817,87 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - 망각 게이트(Forget Gate)
 
     <figure style="text-align: center;">
-
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9957DB445ACB86A021" width="500" height="200">
-
     </figure>
-
-
 
         - 셀 상태의 정보를 지울 것인지 말 것인지를 결정
 
         - [Activation Function]
-
             - Sigmoid 함수를 사용(0 ~ 1사이의 값을 가지게 됨)
-
             - 0 : 정보를 지워버려라, 1 : 모든 정보를 보존해라
 
         - [입력값]
-
             - $h_{t-1}$ = (t-1) 시점의 출력값
-
             - $x_t$ = (t) 시점의 입력값
 
         - [출력값]
-
         <br> ✅ $f_t = σ(W_{hf}h_{t-1} + W_{xf}x_t)$
-
-
 
     - 입력 게이트(Input Gate)
 
     <figure style="text-align: center;">
-
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99D969495ACB86A00B" width="500" height="200">
-
     </figure>
 
-
-
         - 들어오는 새로운 정보 중 어떤 것을 Cell State에 저장할 것인지 결정.
-
             - 새롭게 기억해야 할 정보를 추가하자 ➡ tanh
-
             - 새로운 기억 셀 안에서도 적절히 취사선택하자 ➡ sigmoid
 
         - [Activation Fucntion]
-
             - Sigmoid 함수 : 어떤 값을 업데이트할 지 정함
-
             - tanh 함수 : 새로운 vector를 만듬
 
         - [입력값]
-
             - $h_{t-1}$ = (t-1) 시점의 출력값
-
             - $x_t$ = (t) 시점의 입력값
 
         - [출력값]
-
         <br> ✅ $i_t = σ(W_{hi}h_{t-1} + W_{xi}x_t)$
-
         <br> ✅ $\tilde{C_t} = tanh(W_{hc}h_{t-1} + W_{xc}x_t)$
-
 
 
     - 출력 게이트(Output Gate)
 
     <figure style="text-align: center;">
-
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99FB824C5ACB86A10D" width="500" height="200">
-
     </figure>
-
-
 
         - 현재 시간 단위의 출력을 얼마나 셀 상태와 관련시킬지를 결정하는 역할
 
         - [Activation Function]
-
             - Sigmoid 함수
-
             - tanh 함수
 
         - [입력값]
-
             - $h_{t-1}$ = (t-1) 시점의 출력값
-
             - $x_t$ = (t) 시점의 입력값
-
             - $c_t$ = (t) 시점의 Cell State값
 
         - [출력값]
-
         <br> ✅  $O_t = σ(W_{ho}h_{t-1} + W_{xo}x_t)$
-
         <br> ✅  (최종) $h_t = O_t×tanh(c_t)$
-
 
 
 - 🔥 LSTM의 역전파
 
 <figure style="text-align: center;">
-
     <img src="https://qph.cf2.quoracdn.net/main-qimg-9c5235ffc1faf177cf155f4601836c74-pjlq" width="500" height="300">
-
     <figcaption style="font-size: 10px; color: gray;">출처) https://www.quora.com/How-do-LSTMs-solve-the-vanishing-gradient-problem</figcaption>
-
 </figure>
 
-
-
     - Cell State의 역전파
-
         - ⨁ : 미분값을 건드리지 않고 그대로 흘려보냄
-
         - ⨂ : 원소별 곱 ➡ (중요) 행렬곱이 아니다!
 
 
-
 - 🔥 Multi-Layer LSTM
-
 
 
 - 🔥 Bidirectional LSTM
 
 
 
-- $...$
-
-
 ### ② Transformer
-
-
 
 ## 3) Auto Encoder
 

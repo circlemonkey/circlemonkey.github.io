@@ -80,7 +80,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 </head>
 
 
-## 1. 패키지 불러오기
+# 1. 패키지 불러오기
 
 ```python
 import pandas as pd
@@ -93,21 +93,22 @@ import warnings # Warnings 제거
 warnings.filterwarnings('ignore')
 ```
 
-## 2. 데이터 가져오기
+# 2. 데이터 가져오기
 
+## ▶ 데이터 불러오기
 ```python
-# ▶ 데이터 불러오기
 data = pd.read_excel('url')
 data = pd.read_csv('url')
 ```
+
+## ▶ openml API를 사용하여 데이터 읽어오기
 ```python
-# ▶ openml API를 사용하여 데이터 읽어오기
 from sklearn.datasets import fetch_openml
 X_orig, y = fetch_openml(data_id=43874, as_frame=True, return_X_y=True) # 당뇨 환자 데이터
 ```
 
+## ▶ 데이터 확인하기
 ```python
-# ▶ 데이터 확인하기
 data.shape()
 data.info()
 data.dtypes()
@@ -126,59 +127,58 @@ data.describe()
 data.describe().T.round(2)
 ```
 
-## 3. 데이터 전처리
+# 3. 데이터 전처리
 
+## ▶ 데이터 변형
 ```python
-# ▶ 데이터 변형
 data = data[data['col']=='val'] # data 컬럼의 모든 값을 'val'으로 바꿈
 ```
 
+## ▶ 데이터 groupby
 ```python
-# ▶ 데이터 groupby
 data = data.groupby('col').sum()
 ```
 
+## ▶ 데이터 concat
 ```python
-# ▶ 데이터 concat
 pd.concat([data1, data2])
 ```
 
+## ▶ 데이터 Transpose
 ```python
-# ▶ 데이터 Transpose
 data = data.T
 ```
 
+## ▶ index를 날짜형 index로 바꾸기
 ```python
-# ▶ index를 날짜형 index로 바꾸기
 data.index = pd.to_datetime(data.index)
 ```
 
+## ▶ NaN 처리
 ```python
-# ▶ NaN 처리
 data[data['col'].isna()].head() # Target이 nan인 데이터 탐색
 data = data.dropna() # nan 데이터 삭제
 ```
 
+## ▶ object(dict) 타입으로 저장된 'data' column에 있는 dict 데이터를 풀어서 사용
 ```python
-# ▶ object(dict) 타입으로 저장된 'data' column에 있는 dict 데이터를 풀어서 사용
 df['col1'], df['col2'], df['col3'] = zip(*df['data'].apply(lambda x: [x['col1'], x['col2'], x['col3']]))
 ```
 
-## 4. 데이터 시각화
+# 4. 데이터 시각화
 
+## ▶ plot 그래프
 ```python
-# ▶ plot 그래프
 data.plot(figsize=(a,b))
 ```
 
+## ▶ hist 그래프 -> 모든 컬럼 별 bar 그래프를 보기
 ```python
-# ▶ hist 그래프 -> 모든 컬럼 별 bar 그래프를 보기
 data.hist(figsize=(a,b))
 ```
 
+## ▶ distplot 그래프
 ```python
-# ▶ distplot 그래프
-
 # 1. 모든 X들에 대해서 이진분류 된 값들의 분포 보기
 # -> 두 그래프가 많이 겹쳐있을 수록 해당 X에 대해서 분류가 어려울 것으로 예상
 # -> 하지만 feature는 여러개가 같이 모델에 들어가므로 겹쳐있어도 다른 feature와 같이 예측되면 유의미할 수 있다.
@@ -192,15 +192,14 @@ for i, feat in enumerate(X_train.T):
 plt.tight_layout()
 ```
 
+## ▶ scatter 그래프
 ```python
-# ▶ scatter 그래프
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.scatter(data.1, date.2, color='색')
 ```
 
+## ▶ heatmap 그래프
 ```python
-# ▶ heatmap 그래프
-
 # 1. 기본 heatmap
 sns.set(rc={'figure.figsize':(14, 9)})
 sns.heatmap(data.corr(), annot=True, linewidths=.4)
@@ -217,21 +216,21 @@ sns.heatmap(data.corr(),
             cmap=sns.diverging_palette(20, 220, n=256));
 ```
 
+## ▶ confusion_matrix 그래프
 ```python
-# ▶ confusion_matrix 그래프
 cm = confusion_matrix(y_test, y_preds)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['A','B'])
 disp.plot()
 ```
 
+## ▶ tree plot
 ```python
-# ▶ tree plot
 tree.plot_tree(model, filled=True, feature_names=X.columns, class_names = ['Dead', 'indicator'])
 plt.rcParams['figure.figsize'] = [40,20]
 ```
 
+## ▶ randomforest에 사용되는 그래프
 ```python
-# ▶ randomforest에 사용되는 그래프
 # 1. randomforest를 permutation_importance로 특성 중요도를 평가하여 boxplot으로 나타내기
 from sklearn.inspection import permutation_importance
 '''
@@ -257,8 +256,8 @@ ax.set_title("Permutation Importances (test set)")
 plt.tight_layout();
 ```
 
+## ▶ tree 계열 특성 중요도를 평가하여 barplot으로 나타내기
 ```python
-# ▶ tree 계열 특성 중요도를 평가하여 barplot으로 나타내기
 feature_map = pd.DataFrame(sorted(zip(best_model.feature_importances_, X.columns), reverse=True), columns=['Score', 'Feature'])
 print(feature_map)
 
@@ -271,10 +270,10 @@ plt.tight_layout()
 plt.show()
 ```
 
-## 5. 피처 엔지니어링
+# 5. 피처 엔지니어링
 
+## ▶ 시계열 데이터 단변량 -> 다변량으로 바꾸기
 ```python
-# ▶ 시계열 데이터 단변량 -> 다변량으로 바꾸기
 from scipy.stats import linregress # 데이터 두개를 주면 데이터 두개 간의 기울기, 절편 .. 등의 정보를 줌
 def get_slope(array): # 기울기를 구하기 위한 함수
     y = np.array(array)
@@ -291,8 +290,8 @@ data['min7'] = data['sales'].rolling(7).min() # 7일간 최소값
 data['max7'] = data['sales'].rolling(7).max() # 7일간 최대값
 ```
 
+## ▶ Binary 인코딩
 ```python
-# ▶ Binary 인코딩
 # 1. Boolean을 이용한 Binary 인코딩
 def binary_encoding(X):
   bool_cols_l = X.select_dtypes(include=["category"]).columns.tolist()
@@ -307,8 +306,8 @@ df['diagnosis'] = df['diagnosis'].map(class_mapping)
 y = np.where(df['diagnosis'] == 'malignant', 1, 0)
 ```
 
+## ▶ OneHot 인코딩
 ```python
-# ▶ OneHot 인코딩
 # 1. OneHotEncoder를 이용한 OneHot 인코딩
 from sklearn.preprocessing import OneHotEncoder
 def onehot_encoding(X):
@@ -361,8 +360,8 @@ for _, column_value in enumerate(will_be_encoded):
 data = data.join(pd.get_dummies(data['col'].map(dd), prefix='col'))
 ```
 
+## ▶ StandardScaler
 ```python
-# ▶ StandardScaler
 '''
   # 특성의 스케일을 평균이 0이고 표준편차가 1인 정규 분포에 맞게 조정.
   # z = (x - u) / s
@@ -377,9 +376,8 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 ```
 
-
+## ▶ MinMaxScaler
 ```python
-# ▶ MinMaxScaler
 '''
   # 모든 특성이 주어진 범위(기본적으로 0과 1 사이)에 있도록 만드는 방법
   # 최소-최대 정규화(Min-Max Normalization)
@@ -390,10 +388,8 @@ scarler = MinMaxScaler().fit(X.iloc[train_idx])
 X_scal = scarler.transform(X)
 ```
 
-
+## ▶ 다중공선성 측정
 ```python
-# ▶ 다중공선성 측정
-
 # 1. VIF
 # => 책에서 배운대로 생각하면 VIF가 5가 넘는 Feature는 사용할 수 없다.
 # => 하지만, 대부분의 Feature가 공선성이 높은 경우에는 모든 Feature를 이용해서 1차로 모델링을 진행하고 모델링의 결과를 이용하여 Feature Selection을 하는 방법도 있다.
@@ -410,8 +406,8 @@ def compute_vif(df, considered_features):
     return vif
 ```
 
+## ▶ 실제값 y와 예측을 위한 X 만들기
 ```python
-# ▶ 실제값 y와 예측을 위한 X 만들기
 X = data.drop('col').fillna(0)
 y = data['col']
 
@@ -420,10 +416,10 @@ from sklearn.model_selection import train_test_split # 데이터 split
 train_features, test_features, train_labels, test_labels = train_test_split(X, y, test_size = 0.2, random_state = 42, shuffle=False)
 ```
 
-## 6. 성능 테스트
+# 6. 성능 테스트
 
+## ▶ 이진 분류의 성능평가 지표 (Accuracy, confusion matrix, precision, recall, F1 score, ROC_AUC)
 ```python
-# ▶ 이진 분류의 성능평가 지표 (Accuracy, confusion matrix, precision, recall, F1 score, ROC_AUC)
 from sklearn import metrics
 '''
   ▷ Accuracy : 예측 결과가 동일한 데이터 건수 / 전체 예측 데이터 건수
@@ -493,9 +489,8 @@ def evaluate_class_mdl(fitted_model, X_train, X_test, y_train, y_test, plot=True
         return metrics_dict
 ```
 
-
+## ▶ 교차 검증
 ```python
-# ▶ 교차 검증
 # 1. k-fold
 # => 단계별로 처리하기 때문에 상황에 따른 세밀한 조정이 가능하지만 코드가 좀 더 복잡해질 수 있음
 '''
@@ -541,9 +536,8 @@ def get_cross_val(clf, X, y, model_name, cv_num=5, metric='f1'):
     return s
 ```
 
-
+## ▶ β(계수) 추정법 검증
 ```python
-# ▶ β(계수) 추정법 검증
 '''
   [가설 검정(hypothesis testing)]
   # 귀무가설 (Null Hypothesis, H0): β = 0 (해당 독립변수는 종속변수에 영향을 주지 않음)
@@ -576,9 +570,8 @@ def coef_pval(clf, X, y):
     return p
 ```
 
-
+## ▶ R2_score
 ```python
-# ▶ R2_score
 from sklearn.metrics import r2_score
 '''
   # 회귀 모델의 성능을 평가하는 지표 중 하나.
@@ -600,9 +593,8 @@ def adj_r2_score(clf, X, y):
     return 1 - (1 - r_squared) * ((n - 1) / (n - p - 1))
 ```
 
-
+## ▶ SSE(Standard Squared Error)
 ```python
-# ▶ SSE(Standard Squared Error)
 def sse(clf, X, y):
 '''
   # 예측값과 실제값의 차이(오차)를 제곱한 값들의 합
@@ -614,9 +606,8 @@ def sse(clf, X, y):
     return sse / X.shape[0]
 ```
 
-
+## ▶ MSE(Mean Squared Error)
 ```python
-# ▶ MSE(Mean Squared Error)
 from sklearn.metrics import mean_squared_error
 '''
   # 실제 값과 예측 값의 차이를 제곱한 값들의 평균.
@@ -628,9 +619,8 @@ def mean_squared_error(label, pred):
   return score
 ```
 
-
+## ▶ MAE(Mean Absolute Error)
 ```python
-# ▶ MAE(Mean Absolute Error)
 from sklearn.metrics import mean_absolute_error
 '''
   # 실제 값과 예측 값의 절대적인 차이들의 평균
@@ -642,9 +632,8 @@ def mean_absolute_error(label, pred):
   return score
 ```
 
-
+## ▶ MAPE(Mean Absolute Percentage Error - 평균 절대 비율 오차)
 ```python
-# ▶ MAPE(Mean Absolute Percentage Error - 평균 절대 비율 오차)
 def evaluate_mape(model, test_features, test_labels):
     predictions = model.predict(test_features)
     errors = abs(predictions - test_labels)
@@ -652,16 +641,15 @@ def evaluate_mape(model, test_features, test_labels):
     return mape
 ```
 
-## 7. 모델링
+# 7. 모델링
 
 
 
 [최소자승법(Ordinary Least Squares, OLS)](url)
 
 
-
+## ▶ 최소자승법(Ordinary Least Squares, OLS)
 ```python
-# -----▶ 최소자승법(Ordinary Least Squares, OLS) ◀-----
 '''
   # 회귀 분석에서 가장 일반적으로 사용되는 방법.
   # 실제 값과 모델이 예측한 값 사이의 잔차(residuals)의 제곱합을 최소화하는 파라미터를 찾는 것을 목표.
@@ -693,9 +681,8 @@ print("RMSE: %.3f" % round(np.mean((y - res1.fittedvalues)**2)**0.5, 3))
 [Linear Regression](url)
 
 
-
+## ▶ Linear Regression
 ```python
-# -----▶ Linear Regression ◀-----
 from sklearn.linear_model import LinearRegression
 
 y = data['col_y'] # y
@@ -711,9 +698,8 @@ pred = lm.predict(X_test)
 [Ridge Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html)
 
 
-
+## ▶ Ridge Regression
 ```python
-# -----▶ Ridge Regression ◀-----
 from sklearn.linear_model import Ridge, RidgeCV
 from sklearn.metrics import mean_squared_error
 '''
@@ -736,7 +722,7 @@ for a in penelty:
     mse = mean_squared_error(y_val, pred_y)
     print("Alpha:{0:.5f}, R2:{1:.7f}, MSE:{2:.7f}, RMSE:{3:.7f}".format(a, score, mse, np.sqrt(mse)))
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 2. RidgeCV
 ridge_cv = RidgeCV(alphas=penelty, cv=5)
 model = ridge_cv.fit(X_train, y_train)
@@ -752,9 +738,8 @@ print("Alpha:{0:.5f}, R2:{1:.7f}, MSE:{2:.7f}, RMSE:{3:.7f}".format(0.01, score,
 [LASSO Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html)
 
 
-
+## ▶ LASSO Regression
 ```python
-# -----▶ LASSO Regression ◀-----
 from sklearn.linear_model import Lasso, LassoCV
 from sklearn.metrics import mean_squared_error
 '''
@@ -777,7 +762,7 @@ for a in penelty:
     mse = mean_squared_error(y_val, pred_y)
     print("Alpha:{0:.7f}, R2:{1:.7f}, MSE:{2:.7f}, RMSE:{3:.7f}".format(a, score, mse, np.sqrt(mse))) # select alpha by checking R2, MSE, RMSE
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 2. Cross Validation for LASSO
 lasso_cv=LassoCV(alphas=penelty, cv=5)
 model = lasso_cv.fit(X_train, Y_train)
@@ -793,9 +778,8 @@ print("Alpha:{0:.7f}, R2:{1:.7f}, MSE:{2:.7f}, RMSE:{3:.7f}".format(model.alpha_
 [ElasticNet](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html)
 
 
-
+## ▶ ElasticNet
 ```python
-# -----▶ ElasticNet ◀-----
 from sklearn.linear_model import ElasticNet, ElasticNetCV
 from sklearn.metrics import mean_squared_error
 '''
@@ -830,7 +814,7 @@ for a in alphas:
         mse = mean_squared_error(y_val, pred_y)
         print("Alpha:{0:.7f}, l1_ratio: {1:.7f}, R2:{2:.7f}, MSE:{3:.7f}, RMSE:{4:.7f}".format(a, b, score, mse, np.sqrt(mse))) # select alpha and beta by checking R2, MSE, RMSE
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 2. Cross Validation for ElasticNet
 grid = dict()
 grid['alpha'] = alphas
@@ -855,9 +839,9 @@ print("Alpha:{0:.7f}, l1_ratio: {1:.7f}, R2:{2:.7f}, MSE:{3:.7f}, RMSE:{4:.7f}".
 [Logistic Regression](url)
 
 
-
+## ▶ Logistic Regression
 ```python
-# -----▶ Logistic Regression ◀-----
+
 from sklearn.linear_model import LogisticRegression
 
 # 1. Logistic Regression 기본
@@ -865,7 +849,7 @@ model = LogisticRegression()
 model.fit(X_train,training_y) # 학습
 prediction = model.predict(X_test) # 예측
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 2. Logistic Regression Cross-Validation 교차 검증
 from sklearn.linear_model import LogisticRegressionCV
 '''
@@ -910,9 +894,8 @@ print('Accuracy  (test): {:.2f}'.format(lr_clf.score(X_test_std,  y_test)))
 [Support Vector Machine](url)
 
 
-
+## ▶ Support Vector Machine
 ```python
-# -----▶ Support Vector Machine ◀-----
 from sklearn.svm import SVR
 
 # 1. Support Vector Machine 기본
@@ -920,7 +903,7 @@ model = SVR()
 model.fit(X_train, y_train)
 prediction = model.predict(X_test)
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 2. Support Vector Machine Cross-Validation 교차 검증
 from sklearn.model_selection import GridSearchCV # 하이퍼파라미터 튜닝을 자동화하는 역할, 하이퍼파라미터 값들의 모든 가능한 조합에 대해 교차 검증을 수행
 from sklearn.svm import SVC
@@ -961,9 +944,8 @@ print('Accuracy  (test): {:.2f}'.format(gs_svc.score(X_test_std,  y_test)))
 [Decision Tree](url)
 
 
-
+## ▶ Decision Tree
 ```python
-# -----▶ Decision Tree ◀-----
 # Tree 계열은 Scaling이 필요한가? ➡ 필요없음!
 
 # 1. DecisionTreeRegressor
@@ -973,7 +955,7 @@ model = DecisionTreeRegressor()
 model.fit(X_train, y_train)
 prediction = model.predict(X_test)
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 2. DecisionTreeClassifier
 from sklearn.tree import DecisionTreeClassifier, export_graphviz # DecisionTree
 '''
@@ -1010,9 +992,8 @@ for i in range(2,11,1):
 [Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
 
 
-
+## ▶ Random Forest
 ```python
-# -----▶ Random Forest ◀-----
 # 1. RandomForestRegressor
 from sklearn.ensemble import RandomForestRegressor # Random Forest
 '''
@@ -1027,7 +1008,7 @@ rf = RandomForestRegressor(random_state = 0, n_estimators=200, max_features=4) #
 rf.fit(학습features, 학습labels) # fit
 predicted = rf.predict(테스트features) # predict
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 2. RandomForestClassifier
 from sklearn.model_selection import GridSearchCV # 하이퍼파라미터 튜닝을 자동화하는 역할, 하이퍼파라미터 값들의 모든 가능한 조합에 대해 교차 검증을 수행
 from sklearn.ensemble import RandomForestClassifier
@@ -1072,7 +1053,7 @@ print('Optimal n_estimators: {}  Optimal max_features: {}  Optimal max_depth: {}
 print('Accuracy (train): {:.2f}'.format(gs_rf.score(X_train_std, y_train)))
 print('Accuracy  (test): {:.2f}'.format(gs_rf.score(X_test_std,  y_test)))
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 2) RandomForestClassifier 방법 2
 estimators = [10, 30, 40, 50, 60]
 depth = [4 , 5, 10, 15]
@@ -1117,9 +1098,8 @@ best_model.fit(X_train, y_train)
 [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html)
 
 
-
+## ▶ AdaBoost
 ```python
-# -----▶ AdaBoost ◀-----
 from sklearn.ensemble import AdaBoostClassifier # AdaBoost
 '''
   # n_estimators : # of Tree
@@ -1166,9 +1146,8 @@ best_model.fit(X_train, y_train)
 [Gradient Boosting Machine](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)
 
 
-
+## ▶ GBM
 ```python
-# -----▶ GBM ◀-----
 from sklearn.ensemble import GradientBoostingClassifier # GBM
 '''
   # n_estimators : # of Tree
@@ -1228,9 +1207,8 @@ best_model.fit(X_train, y_train)
 [XGBoost](https://xgboost.readthedocs.io/en/stable/)
 
 
-
+## ▶ XGBoost
 ```python
-# -----▶ XGBoost ◀-----
 from xgboost import XGBClassifier, XGBRegressor # XGB
 '''
   # booster : Iteration 마다의 Model Run Type을 고를수 있음 (2가지)
@@ -1307,9 +1285,8 @@ best_model.fit(X.iloc[train_idx], Y.iloc[train_idx])
 [LightGBM](https://lightgbm.readthedocs.io/en/latest/Python-Intro.html)
 
 
-
+## ▶ LightGBM
 ```python
-# -----▶ LightGBM ◀-----
 import lightgbm as lgb
 import optuna # 하이퍼파라미터 튜닝
 
@@ -1346,7 +1323,7 @@ import optuna # 하이퍼파라미터 튜닝
 # ▶ 1. Default
 clf = lgb.LGBMClassifier(random_state=rand, n_jobs=-1)
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # ▶ 2. scale_pos_weight로 하이퍼파라미터 튜닝
 # Class Weights - 1) scale_pos_weight
 # Positive 클래스를 예측할 때 보수적 접근방법으로 모델을 생성 -> Positive 클래스에 더 많은 비중을 두도록 강제하는 Hyperparameter를 활용
@@ -1355,7 +1332,7 @@ def_scale_pos_weight = len(y[y==0]) / len(y[y==1])
 print(f"default scale pos weight: {def_scale_pos_weight:.2f}")
 clf = lgb.LGBMClassifier(random_state=rand, n_jobs=-1, scale_pos_weight=def_scale_pos_weight)
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # ▶ 3. max_depth(트리 깊이를 제한하기 위해), reg_lambda 및 reg_alpha를 사용한 L1/L2 정규화 하이퍼파라미터 튜닝
 def lambda_alpha_tuning(trial):
 params = {
@@ -1385,7 +1362,7 @@ clf = lgb.LGBMClassifier(random_state=rand, n_jobs=-1,**best_params)
 # 학습
 clf.fit(X_train, y_train)
 
-### --------------------------------------------------------------- ###
+# --------------------------------------------------------------- #
 # 4. for문을 이용한 직접 하이퍼파라미터 튜닝
 from lightgbm import LGBMClassifier, LGBMRegressor # LightGBM
 n_tree = [5, 10, 20] # n_estimators
@@ -1438,9 +1415,8 @@ best_model.fit(X.iloc[train_idx], Y.iloc[train_idx])
 [K-Nearest Neighbors](url)
 
 
-
+## ▶ K-Nearest Neighbors
 ```python
-# -----▶ K-Nearest Neighbors ◀-----
 from sklearn.model_selection import GridSearchCV # 하이퍼파라미터 튜닝을 자동화하는 역할, 하이퍼파라미터 값들의 모든 가능한 조합에 대해 교차 검증을 수행
 from sklearn.neighbors import KNeighborsClassifier
 '''
@@ -1475,9 +1451,8 @@ print(gs_knn.best_estimator_.get_params())
 [K-means](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
 
 
-
+## ▶ K-means
 ```python
-# -----▶ K-means ◀-----
 # => Distance 기반의 Clustering의 경우 Scaling이 필수
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
@@ -1538,9 +1513,8 @@ print(cm)
 [Hierachical Clustering](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html)
 
 
-
+## ▶ Hierachical Clustering
 ```python
-# -----▶ Hierachical Clustering ◀-----
 # => Distance 기반의 Clustering의 경우 Scaling이 필수
 # => K-means와 달리 군집 수(K)를 사전에 정하지 않아도 학습을 수행
 # 계산 복잡성은  O(n3)
@@ -1559,9 +1533,8 @@ plt.show()
 [Spectral Clustering](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html)
 
 
-
+## ▶ Spectral Clustering
 ```python
-# -----▶ Spectral Clustering ◀-----
 # => Distance 기반의 Clustering의 경우 Scaling이 필수
 from sklearn.decomposition import PCA
 from sklearn.cluster import SpectralClustering
@@ -1627,9 +1600,8 @@ print("F1-Score : {}".format(f1_score(data['censor'], data['2 label'])))
 [DBSCAN](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html)
 
 
-
+## ▶ DBSCAN
 ```python
-# -----▶ DBSCAN ◀-----
 # => 밀도 기반의 기법
 '''
   # eps : 이웃을 판단하는 거리
@@ -1657,9 +1629,8 @@ for e in epsilon:
 [HDBSCAN](https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html)
 
 
-
+## ▶ HDBSCAN
 ```python
-# -----▶ HDBSCAN ◀-----
 # => 밀도 기반의 기법
 '''
   # min_cluster : Cluster 안에 적어도 몇개가 있어야 하는지
@@ -1680,9 +1651,7 @@ for m in minsize:
     plt.show()
 ```
 
-## 8. 모델 비교
-
-
+# 8. 모델 비교
 
 ```python
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
