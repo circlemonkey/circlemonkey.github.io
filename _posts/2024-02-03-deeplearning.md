@@ -436,90 +436,53 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 
 - 🔥 e.g. (계산해보기)
-
 <figure style="text-align: center;">
-
     <img src="https://miro.medium.com/v2/resize:fit:1400/0*u8uSPvkagjmnxiJZ.jpeg" width="500" height="300">
-
     <figcaption style="font-size: 10px; color: gray;">출처) https://medium.com/@miyachan84/%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks-5db5c7cb91dc</figcaption>
-
 </figure>
 
-
-
     - 1) Input
-
         - 입력 이미지(Input)가 흑백이미지 : 채널(Chennel) = 1
-
         - 입력 이미지(Input)의 크기가 28x28x1(H x W x C)
 
     - 2) Convolution - (1)
-
         - 필터(Filter = Kernel)의 크기가 5
-
         - 필터(Filter = Kernel)의 개수가 n1
-
         - stride = 1, padding = 0
-
         - ✅ 출력 Feature Map의 크기 = 24x24xn1(H x W x n1)
-
             - H = ((28 + 2x0 - 5) / 1) + 1 = 23 + 1 = 24
-
             - W = ((28 + 2x0 - 5) / 1) + 1 = 23 + 1 = 24
-
             - C = Filter의 개수 = n1
 
     - 3) Max-Pooling - (1)
-
         - (2x2) Max-Pooling, stride = 2
-
         - ✅ 출력 Feature Map의 크기 = 12x12xn1(H x W x n1)
-
             - H = (24 - 2 / 2) + 1 = 11 + 1 = 12
-
             - W = (24 - 2 / 2) + 1 = 11 + 1 = 12
-
             - ((입력 특징 맵의 크기 - 풀링 영역의 크기) / 스트라이드) + 1
 
     - 4) Convolution - (2)
-
         - 필터(Filter = Kernel)의 크기가 5
-
         - 필터(Filter = Kernel)의 개수가 n2
-
         - stride = 1, padding = 0
-
         - ✅ 출력 Feature Map의 크기 = 8x8xn2(H x W x n2)
-
             - H = ((12 + 2x0 - 5) / 1) + 1 = 7 + 1 = 8
-
             - W = ((12 + 2x0 - 5) / 1) + 1 = 7 + 1 = 8
-
             - C = Filter의 개수 = n2
 
     - 5) Max-Pooling - (1)
-
         - (2x2) Max-Pooling, stride = 2
-
         - ✅ 출력 Feature Map의 크기 = 4x4xn2(H x W x n2)
-
             - H = (8 - 2 / 2) + 1 = 3 + 1 = 4
-
             - W = (8 - 2 / 2) + 1 = 3 + 1 = 4
 
     - 6) FC
-
         - Flatten 해주기
-
         - fully connected.
-
         - Activation Function 적용.
 
     - 7) Output
-
         - 얻으려는 결과의 개수를 설정하여 얻음.
-
-    
 
 
 ### ① ResNet
@@ -580,13 +543,9 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 ## 2) RNN
 
 - 🔥 RNN 이란?
-
 <figure style="text-align: center;">
-
     <img src="https://velog.velcdn.com/images%2Fyuns_u%2Fpost%2Fccbb28ea-fa08-4d23-804e-419e6f578e4b%2Fimage.png" width="700" height="200">
-
     <figcaption style="font-size: 10px; color: gray;">출처) https://velog.io/@yuns_u/%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9DRNN-Recurrent-Neural-Network</figcaption>
-
 </figure>
 
     - RNN = Recurrent Neural Network
@@ -596,35 +555,24 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - 이전의 정보를 현재의 작업에 활용할 수 있는 능력을 가지고 있음
 
     - 구성
-
         - 타임 스탭(Time step, t), 입력층(input layer, $x_t$), 은닉층(hidden layer, $h_t$), 셀(cell), 출력층(output layer, $o_t$)
 
     - 입력층(input layer)
-
         - 주어지는 입력 데이터를 받는 층
-
         - 각 시간 단위에서의 입력이 이 층으로 들어옴
 
     - 은닉층(hidden layer)
-
         - RNN에서 시퀀스 데이터의 특징을 추출
-
         - 이전 시간 단위의 정보를 저장하는 역할
-
         - ***은닉상태(hidden state)*** : 메모리 셀이 출력층 방향 또는 다음 시점인 t+1의 자신에게 보내는 값
 
     - 셀(cell)
-
         - 은닉층에서 활성화 함수를 통해 결과를 내보내는 역할을 하는 노드를 셀(cell)이라고 함
-
         - 이전의 값을 기억하려고 하는 일종의 메모리 역할을 수행하므로 ***메모리 셀(RNN 셀)***이라고 표현
 
     - 출력층(ouput layer)
-
         - 최종적으로 출력되는 값을 제공하는 층
-
         - 분류 작업에서는 소프트맥스 함수를 사용하여 클래스별 확률을 출력하는 층을 사용할 수 있음
-
 
 
 - 🔥 현재 시점(t)에서의 RNN 원리
@@ -660,22 +608,10 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 
     - (2) 현재시점(t)의 Input Vector($x_t$)의 차원을 d, 은닉상태의 크기를 $D_h$라고 하면 각 크기는?
-
         <figure style="text-align: center;">
-
-            <img src="https://wikidocs.net/images/page/22886/rnn_image4_ver2.PNG" width="150" height="100">
-
-        </figure>
-
-        <figure style="text-align: center;">
-
             <img src="https://wikidocs.net/images/page/22886/rnn_images4-5.PNG" width="500" height="180">
-
             <figcaption style="font-size: 10px; color: gray;">출처) https://wikidocs.net/22886</figcaption>
-
         </figure>
-
-
 
         - $x_t$ : (d×1)
 
@@ -779,11 +715,8 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - RNN의 그래디언트 소실(Vanishing Gradient) 문제를 해결하고, 긴 시퀀스 데이터에서도 장기 의존성을 효과적으로 학습할 수 있도록 설계
 
 <figure style="text-align: center;">
-
     <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F999F603E5ACB86A005" width="500" height="300">
-
     <figcaption style="font-size: 10px; color: gray;">출처) https://dgkim5360.tistory.com/entry/understanding-long-short-term-memory-lstm-kr</figcaption>
-
 </figure>
 
 
@@ -791,7 +724,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - 🔥 '셀 상태(cell state)'와 '게이트(gate)' 메커니즘
 
     - 셀 상태(Cell State)
-
     <figure style="text-align: center;">
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99CB87505ACB86A00F" width="500" height="200">
     </figure>
@@ -812,10 +744,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
             - $C_t = C_{t-1}×f_t + i_t×\tilde{C_t}$
 
-
-
     - 망각 게이트(Forget Gate)
-
     <figure style="text-align: center;">
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9957DB445ACB86A021" width="500" height="200">
     </figure>
@@ -834,7 +763,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
         <br> ✅ $f_t = σ(W_{hf}h_{t-1} + W_{xf}x_t)$
 
     - 입력 게이트(Input Gate)
-
     <figure style="text-align: center;">
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99D969495ACB86A00B" width="500" height="200">
     </figure>
@@ -857,7 +785,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 
     - 출력 게이트(Output Gate)
-
     <figure style="text-align: center;">
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99FB824C5ACB86A10D" width="500" height="200">
     </figure>
@@ -879,7 +806,6 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 
 - 🔥 LSTM의 역전파
-
 <figure style="text-align: center;">
     <img src="https://qph.cf2.quoracdn.net/main-qimg-9c5235ffc1faf177cf155f4601836c74-pjlq" width="500" height="300">
     <figcaption style="font-size: 10px; color: gray;">출처) https://www.quora.com/How-do-LSTMs-solve-the-vanishing-gradient-problem</figcaption>
@@ -889,12 +815,9 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
         - ⨁ : 미분값을 건드리지 않고 그대로 흘려보냄
         - ⨂ : 원소별 곱 ➡ (중요) 행렬곱이 아니다!
 
-
 - 🔥 Multi-Layer LSTM
 
-
 - 🔥 Bidirectional LSTM
-
 
 
 ### ② Transformer
