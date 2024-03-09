@@ -989,29 +989,15 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - 2) 입력 정보와 AE의 출력 정보간 차이를 이용한 분석 (***이상상태 탐지***)
 
 
-
-- 🔥 Loss function
-
-    - $l(f(x)) = {{1} \over {2}} \sum_k{(\hat{x_k} - x_k)^2}$
-
-    - $\hat{x_k}$ : 추정된 나
-
-    - $x_k$ : 나
-
-
-
 - 🔥 Encoder, Decoder
 
     - Encoder
 
         - $h(x)$ = $g(a(x))$ = $sigm(b+Wx)$
 
-
-
     - Decoder
 
         - $\hat{x}$ = $o(\hat{a}(x))$ = $sigm(c + W×h(x))$
-
 
 
 - 🔥 한계점
@@ -1152,3 +1138,896 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - Q-가치를 추정하기 위해 사용하는 DNN을 심층 Q-네트워크(DQN)라 함
 
 - 근사 Q-러닝을 위해 DQN을 사용하는 것을 심층 Q-러닝이라 함
+
+
+
+
+
+# ⭐ 3. 실습
+
+- tensorflow : https://www.tensorflow.org/guide?hl=ko
+
+- keras : https://keras.io/about/
+
+- pytorch : https://pytorch.org/docs/stable/index.html
+
+
+## 0) 텐서 개념 및 연산
+
+
+
+```python
+import torch
+```
+
+
+```python
+# 5x3 matrix 생성하기
+matrix = torch.empty((5,3))
+matrix
+```
+
+<pre>
+tensor([[ 7.0065e-44,  6.9757e-42, -9.1240e+15],
+        [ 1.1362e+30,  7.1547e+22,  4.5828e+30],
+        [ 9.2065e-43,  0.0000e+00, -6.9878e-12],
+        [ 4.5200e-41, -6.9878e-12,  4.5200e-41],
+        [ 2.5353e+30,  3.6434e-44,  3.3491e-43]])
+</pre>
+
+```python
+# 랜덤하게 초기화된 5x3 matrix 생성하기
+matrix = torch.rand(5,3)
+matrix
+```
+
+<pre>
+tensor([[0.5051, 0.1222, 0.0023],
+        [0.2738, 0.3151, 0.5304],
+        [0.6350, 0.2897, 0.3284],
+        [0.3748, 0.5360, 0.4069],
+        [0.4091, 0.4340, 0.7416]])
+</pre>
+
+```python
+# 0으로 채워진 5x3 matrix 생성
+default_matrix = torch.zeros(5,3)
+print(default_matrix)
+print(default_matrix.dtype)
+```
+
+<pre>
+tensor([[0., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.]])
+torch.float32
+</pre>
+
+```python
+# matrix의 type을 지정하여 생성
+long_matrix = torch.zeros(5,3, dtype=torch.long)
+print(long_matrix)
+print(long_matrix.dtype)
+```
+
+<pre>
+tensor([[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]])
+torch.int64
+</pre>
+
+```python
+# list ----> tensor
+data = list([3,4])
+print(data)
+print(type(data))
+
+tensor = torch.tensor(data)
+print(tensor)
+print(type(tensor))
+```
+
+<pre>
+[3, 4]
+<class 'list'>
+tensor([3, 4])
+<class 'torch.Tensor'>
+</pre>
+
+```python
+# numpy ----> tensor
+import numpy as np
+array = np.array([1,2,3])
+print(array)
+print(type(array))
+
+tensor = torch.tensor(array)
+print(tensor)
+print(type(tensor))
+```
+
+<pre>
+[1 2 3]
+<class 'numpy.ndarray'>
+tensor([1, 2, 3])
+<class 'torch.Tensor'>
+</pre>
+🦣 Tensor의 연산
+
+
+
+```python
+torch.manual_seed(0)
+x = torch.rand(5,3)
+y = torch.rand(5,3)
+```
+
+
+```python
+print(torch.add(x,y)) # 더하기
+print(torch.sub(x,y)) # 빼기
+print(torch.mul(x,y)) # 곱하기
+print(torch.div(x,y)) # 나누기
+```
+
+<pre>
+tensor([[1.0148, 1.4659, 0.8885],
+        [0.2931, 0.5897, 1.3157],
+        [1.4053, 1.2935, 1.3298],
+        [1.0517, 0.9018, 1.3545],
+        [0.0585, 0.3541, 0.6673]])
+tensor([[-0.0223,  0.0706, -0.7115],
+        [-0.0290,  0.0252, -0.0475],
+        [-0.4251,  0.4993, -0.4185],
+        [ 0.2129, -0.2040, -0.5510],
+        [-0.0138, -0.0164, -0.0795]])
+tensor([[0.2573, 0.5360, 0.0708],
+        [0.0213, 0.0868, 0.4322],
+        [0.4485, 0.3560, 0.3983],
+        [0.2652, 0.1929, 0.3827],
+        [0.0008, 0.0313, 0.1097]])
+tensor([[0.9571, 1.1011, 0.1106],
+        [0.8199, 1.0891, 0.9303],
+        [0.5355, 2.2575, 0.5212],
+        [1.5076, 0.6310, 0.4216],
+        [0.6173, 0.9116, 0.7870]])
+</pre>
+## 1) MLP, CNN (1)
+
+
+
+```python
+!pip install torchinfo
+```
+
+**1. 필요한 라이브러리 가져오기**
+
+
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import random
+from time import time
+import os
+from tqdm.auto import tqdm
+
+# 파이토치 라이브러리와 필요한 모듈들을 불러옵니다.
+import torch
+import torchvision
+from torchinfo import summary
+```
+
+
+```python
+seed = 2023
+deterministic = True
+
+random.seed(seed)
+np.random.seed(seed)
+torch.manual_seed(seed)
+
+# GPU 사용시 필요한 코드
+torch.cuda.manual_seed_all(seed) # cuda : GPU와 연관
+if deterministic:
+	torch.backends.cudnn.deterministic = True
+	torch.backends.cudnn.benchmark = False
+```
+
+
+```python
+!nvidia-smi
+```
+
+
+```python
+# 버전 체크하기
+print(torch.__version__)
+print(torchvision.__version__)
+print(os.cpu_count()) # number of CPU cores
+```
+
+**2. 전처리**
+
+
+
+```python
+# 이미지 전처리에 필요한 transformation 함수를 정의 (pipeline 형태)
+from torchvision.transforms import transforms
+
+# transform = transforms.Compose([
+#     transforms.ToTensor(), # numpy.array 등을 torch.FloatTensor로 변환 & 흑백 사진 [0, 255] -> [0.0, 1.0]으로 정규화
+#     transforms.Normalize(mean=0.5, std=0.5) # standard scaling [0.0, 1.0] - 0.5 --> [-0.5, +0.5] / 0.5 --> [-1.0, 1.0]
+# ])
+
+# for CIFAR10 (RGB channel)
+transform = transforms.Compose([
+  transforms.ToTensor(),
+  transforms.Normalize(mean=(0.5,0.5,0.5),
+                       std=(0.5,0.5,0.5))
+])
+
+# for ImageNet (RGB channel)
+transform = transforms.Compose([
+  transforms.ToTensor(),
+  transforms.Normalize(mean=(0.485, 0.456, 0.406), # ImageNet 데이터의 RGB channel별 mean, std.
+                       std=(0.229, 0.224, 0.225))
+])
+```
+
+
+```python
+# torch에서 학습에 사용할 config variable들을 세팅합니다.
+num_workers = 2
+batch_size = 256
+learning_rate = 1e-3 # 0.1 ~ 0.000001 (1e-1 ~ 1e-6)
+epochs = 10
+```
+
+**3. 데이터 나누기**
+
+
+
+```python
+# Data Load (DataSet, DataLoader)
+# trainset = torchvision.datasets.MNIST(root='./',
+#                                       train=True, # trainset을 가져옴. (60000장)
+#                                       download=True,
+#                                       transform=transform)
+# testset = torchvision.datasets.MNIST(root='./',
+#                                      train=False, # testset (10000장)
+#                                      download=True,
+#                                      transform=transform
+#                                      )
+trainset = torchvision.datasets.CIFAR10(root='./',
+                                        train=True,
+                                        download=True,
+                                        transform=transform)
+testset = torchvision.datasets.CIFAR10(root='./',
+                                       train=False,
+                                       download=True,
+                                       transform=transform)
+
+# iterator의 역할을 할 수 있음.
+trainloader = torch.utils.data.DataLoader(dataset=trainset,
+                                          batch_size=batch_size, # for문을 던지면 데이터가 batch_size 단위로 뽑혀나옴
+                                          shuffle=True, # batch_size 단위로 뽑힐 때 데이터가 섞여서 뽑힘
+                                          num_workers=num_workers
+                                          )
+testloader = torch.utils.data.DataLoader(dataset=testset,
+                                         batch_size=batch_size,
+                                         shuffle=False, # 테스트는 섞을 필요가 없다!
+                                         num_workers=2
+                                         )
+classes = ('airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+```
+
+
+```python
+# show image
+def imshow(img):
+  img = img/2 + 0.5 # unnormalize
+  npimg = img.numpy()
+  plt.imshow(np.transpose(npimg, (1,2,0)))
+  plt.show()
+
+# iterator를 이용해서 데이터를 불러오게 만듭니다. (batch processing을 위해서)
+dataiter = iter(trainloader) # trainloader를 iterator로 선언.
+images, labels = next(dataiter) # next 함수는 iterator의 반복 수행함.
+
+imshow(torchvision.utils.make_grid(images))
+print(' '.join(f'{classes[labels[j]]}' for j in range(batch_size)))
+```
+
+
+```python
+# shape을 확인
+print(images.shape, labels.shape)
+# torch.Tensor (batch_size, channel, H, W) ## (image 한정) 4차원 tensor.
+```
+
+**4. 모델 구현**
+
+
+
+```python
+import torch.nn as nn
+
+# 모델 구현에 필요한 레이더들을 정의
+class MLP(nn.Module):
+  def __init__(self): # class constructor ## 모델 정의 (define layers)
+    super().__init__()
+    # 3 Layer-NN : (input, hidden1, hidden2)
+    # nn.Linear의 in_features는 input node 개수, out_features는 output node 개수
+    self.fc1 = nn.Linear(in_features=1*28*28, out_features=512) # out_features는 10~28*28 범위 내에서 2의 거듭제곱으로 정하기 # input_layer -> hidden_layer1
+    self.fc2 = nn.Linear(512, 128) # hidden_layer1 -> hidden_layer2
+    self.fc3 = nn.Linear(128, 10) # hidden_layer2 -> output_layer(0~9의 숫자이므로 10개)
+    self.relu = nn.ReLU() # activation layer
+    self.softmax = nn.Softmax(dim=1) # output function # dim의 의미 : 결과가 (batch_size, output_layer_size) 크기로 들어올 텐데, 각 벡터 별로 softmax를 적용하기 위해서 dim=1로 적용
+
+  def forward(self, x):
+    # feed-forward 연산을 구현
+    # x = (bs, 1, 28, 28) --> (bs, 1*28*28)
+    x = torch.flatten(x, 1) # = torch.flatten(input=x, start_dim=1, end_dim=-1) # => 784차원 vector (bias 포함하면 785차원)
+    x = self.fc1(x)
+    x = self.relu(x)
+    x = self.fc2(x)
+    x = self.relu(x)
+    x = self.fc3(x)
+    x = self.softmax(x)
+    return x
+
+# Conv -> ReLU -> Conv -> ReLU -> MaxPool -> fc1 -> fc2 -> fc3(output)
+class CNN(nn.Module):
+  def __init__(self):
+    # X = (N-F) / S+1
+
+    super().__init__()
+    self.conv1 = nn.Conv2d(in_channels=3,
+                           out_channels=6, # number of filters
+                           kernel_size=3, # = (3,3)
+                           stride=1,
+                           padding=0) # (3,32,32) ---> (6,30,30)
+    self.conv2 = nn.Conv2d(6, 12, 3) # (6,30,30) --> (12,28,28)
+    self.maxpool = nn.MaxPool2d(kernel_size=2,
+                                stride=2) # (12,28,28) --> (12,14,14)
+    self.fc1 = nn.Linear(in_features=12*14*14, # 2352
+                         out_features=1024)
+    self.fc2 = nn.Linear(1024, 128)
+    self.fc3 = nn.Linear(128, 10)
+    self.relu = nn.ReLU()
+    self.softmax = nn.Softmax(dim=1)
+
+  def forward(self, x):
+    x = self.relu(self.conv1(x))
+    x = self.relu(self.conv2(x))
+    x = self.maxpool(x)
+    x = torch.flatten(x, 1) # (batch_size, 12,14,14) --> (batch_size, 12*14*14)
+    x = self.relu(self.fc1(x))
+    x = self.relu(self.fc2(x))
+    x = self.softmax(self.fc3(x))
+    return x
+```
+
+
+```python
+# device를 지정하기 위함
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print(device)
+```
+
+
+```python
+#model = MLP() # 메인메모리에 실행
+#model = MLP().to(device) # GPU에 복사
+model = CNN().to(device)
+model
+```
+
+
+```python
+'''
+1290 -> 1290개의 weight ((128+1) * 10) : 1은 bias
+65,664 -> 512 * 128 = 65,536 -> (512+1) * 128 = 65,664
+401,920 -> (784 + 1) * 512
+'''
+summary(model)
+```
+
+
+```python
+# show params
+for x in model.parameters():
+  print(x.shape) # real parameters
+```
+
+**5. Optimizer와 Loss function 정의**
+
+
+
+```python
+import torch.optim as optim
+
+# optimizer = optim.SGD(params=model.parameters(), lr=learning_rate)
+optimizer = optim.AdamW(params=model.parameters(), lr=learning_rate)
+criterion = nn.CrossEntropyLoss()
+```
+
+**6. 학습**
+
+
+
+```python
+start = time()
+
+# for문을 이용하여 epoch마다 학습을 수행하는 코드를 작성
+# 1 epoch : 전체 데이터를 다 학습시킨 경우
+# 1 iteration : 1 weight update
+# 1 epoch : batch_size * iterations
+# total iterations = epoch(5) * iterations(469)
+
+
+# epoch, iterations, step
+# 데이터를 직접 로드해서, 직접 모델에 넣고, 직접 loss를 계산 (자동으로 loss update)
+# mini-batch training!!!!
+for epoch in tqdm(range(epochs)):
+  n_correct = 0
+  total_loss = 0.0
+  for idx, data in enumerate(trainloader):
+    optimizer.zero_grad() # gradient 초기화
+
+    #### feed forward ####
+    #images, labels = data[0], data[1] # CPU version
+    images, labels = data[0].to(device), data[1].to(device) # GPU version => 무조건 tensor 형식으로 보내야됨
+
+    outputs = model(images) # forward(x)와 같음
+    loss = criterion(outputs, labels) # compute loss
+    #print(f'Epoch {epoch} : {idx:4d} iteration --> \t{loss.item():.4f}') # loss value
+    n_correct = n_correct + (torch.max(model(images), dim=1)[1] == labels).sum() # batch 당 맞은 개수
+    total_loss += loss.item()
+
+    #### backprop ####
+    loss.backward() # loss를 가지고 backprop
+    optimizer.step() # SGD를 이용해서 weight update를 수행함
+  print(f'Epoch {epoch}, Train Accuracy : {n_correct/len(trainset):4f} \t Train Loss : {total_loss/len(trainloader):4f}') # epoch 당 맞은 정확도, epoch당 loss 평균
+end = time()
+
+print("Training Done.")
+print(f'Elasped Time : {end-start:.4f} secs.')
+```
+
+**7. 예측**
+
+
+
+```python
+# make prediction for each class
+correct_pred = {classname: 0 for classname in classes}
+total_pred = {classname: 0 for classname in classes}
+
+# weight update를 하지 않는 모드 (inference only)
+with torch.no_grad():  # test time 때, local gradient를 따로 저장하지 않음. (속도, 메모리) => feed forward를 저장하지 않음(back_propagation을 안할거니까)
+    ## TO-DO ##
+    ## testloader를 이용해서 학습이 완료된 모델에 대해 test accuracy를 계산해보세요.
+    n_correct = 0
+    total_loss = 0.0
+
+    for idx, data in enumerate(testloader):
+        images, labels = data[0].to(device), data[1].to(device)
+        outputs = model(images)
+        loss = criterion(outputs, labels)
+        preds = torch.max(outputs, dim=1)[1]
+        n_correct += (preds == labels).sum()
+        total_loss += loss.item()
+
+    print(f"Test Accuracy : {n_correct/len(testset):4f} | Test (average)Loss : {total_loss/len(testloader):4f}")
+
+
+# for classname, correct_count in correct_pred.items():
+#     accuracy = 100 * float(correct_count) / total_pred[classname]
+#     print(f"Accuracy for class: {classname:5s} is {accuracy:.1f} %")
+```
+
+## 2) LSTM (1)
+
+
+**1. 라이브러리 불러오기 및 설치, 데이터 수집**
+
+
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings
+import os
+import random
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+```
+
+
+```python
+seed = 2023
+random.seed(seed)
+np.random.seed(seed)
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+```
+
+
+```python
+!sudo apt-get install -y fonts-nanum
+!sudo fc-cache -fv
+!rm ~/.cache/matplotlib -rf
+```
+
+
+```python
+!pip install finance-datareader torchinfo
+```
+
+
+```python
+# 삼성전자(005930) 전체
+index = '005930'
+samsung = fdr.DataReader(symbol=index, start='1990-01-01', end='2023-12-31')
+samsung
+```
+
+**2. 데이터 전처리**
+
+
+
+```python
+###### 분류 시 변경 ######
+# # label 만들기
+# samsung['Label'] = (samsung['Change'] >= 0) * 1
+###### 분류 시 변경 ######
+```
+
+
+```python
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+# 스케일을 적용할 column을 정의합니다.
+scale_cols = ['Open', 'High', 'Low', 'Volume', 'Close']
+# 스케일 후 columns
+df = samsung.loc[samsung.index > '20200101', scale_cols]
+scaled = scaler.fit_transform(df)
+df = pd.DataFrame(scaled, columns=scale_cols, index=df.index)
+```
+
+**3. train/test 분할**
+
+
+
+```python
+train = df.loc[df.index < '20230101']
+test = df.loc[df.index > '20230101']
+
+###### 분류 모델 시 ######
+# X_train, y_train = train.drop(["Close","Label"], axis=1), train.Close
+# X_test, y_test = test.drop("Label", axis=1), test.Close
+
+###### 회귀 모델 시 ######
+X_train, y_train = train.drop("Close", axis=1), train.Close
+X_test, y_test = test.drop("Close", axis=1), test.Close
+
+# 출력
+print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
+```
+
+**4. Data Preparation**
+
+
+
+```python
+from torch.utils.data import TensorDataset # 텐서데이터셋
+from torch.utils.data import DataLoader # 데이터로더
+
+seq_length = 30
+batch_size = 32
+
+# 데이터셋 생성 함수
+def build_dataset(X, y, seq_length):
+
+    X_data = []
+    y_data = []
+
+    for idx in range(0, len(X)-seq_length):
+        _X = X[idx:idx+seq_length] # 30개 feature vectors
+        _y = y[idx+seq_length] # 1개 (31번째 target value, close)
+        X_data.append(_X.values)
+        y_data.append(_y)
+        #print(_X, '--->', _y)
+
+    X_data = torch.FloatTensor(np.array(X_data))
+    y_data = torch.FloatTensor(np.array(y_data))
+    return X_data, y_data
+
+trainX, trainY = build_dataset(X_train, y_train, seq_length)
+testX, testY = build_dataset(X_test, y_test, seq_length)
+
+# 1) 데이터셋 정의
+trainset = TensorDataset(trainX, trainY)
+testset = TensorDataset(testX, testY)
+
+# 2) 데이터로더정의
+# => 기본적으로 2개의 인자를 입력받으며 배치크기는 통상적으로 2의 배수를 사용
+trainloader = DataLoader(trainset,
+                         batch_size=batch_size,
+                         shuffle=True)#,
+                         #drop_last=True) # 데이터로더를 가져올 때 마지막에 배치사이즈랑 맞지않은 것은 drop 하겠다.
+
+testloader = DataLoader(testset,
+                        batch_size=batch_size,
+                        shuffle=False)#,
+                        #drop_last=True)
+```
+
+**5. Model 구현**
+
+
+
+```python
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print(device)
+```
+
+
+```python
+class LSTM(nn.Module):
+    # # 기본변수, layer를 초기화해주는 생성자
+    def __init__(self, input_dim, hidden_dim, seq_len, output_dim, n_layers):
+        super().__init__()
+        self.input_dim = input_dim      # input feature vector input_dim                         #
+        self.hidden_dim = hidden_dim    # hidden layer node 개수 (= hidden state dim)            #
+        self.seq_len = seq_len          # hidden state 개수 (=input sequence length)             #
+        self.output_dim = output_dim    # output layer의 node 개수 (=output dim)                 #
+        self.n_layers = n_layers        # multi-layer로 구성할 때, (hidden, LSTM)layer 수        # 멀티 레이어로 구성할 때 LSTM을 몇 개 쓸 것 이냐?
+
+        self.lstm = nn.LSTM(input_size=input_dim, # Wxh   (input_dim x hidden_dim)
+                            hidden_size=hidden_dim, # Whh (hidden_dim x hidden_dim)
+                            num_layers=n_layers,
+                            batch_first=True, # 맨 앞에 있는 숫자가 batch_size구나 라고 알려줌
+                            dropout=0.1, # hidden layer의 node중에 일부를 deactivate 시킴. (1 layer일 때는 안쓰는게 좋음.) # 0.1일 땐, hidden layer 10개 중에서 1개를 iterator마다 학습에서 제외함
+                            bidirectional=False)  # (batch_size, ~~~~) # NLP할 때 사용할 듯
+
+        # multi layer를 사용한다면! (: input_dim = 4, hidden_dim = 10)
+        # LSTM1 = Wxh (4x10)
+        # LSTM2 = Wxh (10x10)
+        # LSTM3 = Wxh (10x10)
+        # ...
+
+        # fc는 한개, 두개 모두 사용할 수 있다.
+        self.fc = nn.Linear(in_features=hidden_dim,
+                            # out_features=output_dim) # fc 한개 사용 시.
+                            out_features=5) # fc 두개 사용 시.
+        self.fc2 = nn.Linear(5, output_dim)
+        self.relu = nn.ReLU() # non-linear하게 예측하겠다.
+
+        ###### 분류 시 변경 ######
+        #self.output = nn.Sigmoid()   # if, output_dim = 1
+        #self.output = nn.Softmax()   # if, output_dim = 2
+        ###### 분류 시 변경 ######
+
+    # 예측을 위한 함수
+    def forward(self, x):  # (N, L, H_in)
+        # h0, c0를 zero벡터로 쓸 필요 X -> 알아서 해줌 -> h0, c0를 제로벡터가 아닌 다른 것으로 선언 하려면 이렇게 하기
+        # (n_layers, batch_size, hidden_dim)
+        # h0 = torch.zeros(self.n_layers, x.size(0), self.hidden_dim).to(device)
+        # c0 = torch.zeros(self.n_layers, x.size(0), self.hidden_dim).to(device)
+        # x, (hn, cn) = self.lstm(x, (h0, c0)) # (N, L, H_in) ---(LSTM)---> (N, L, H_out) # (32, 30, 4) ----> (32, 30, 10) = (batch_size, seq_len, hidden_dim)
+
+        # input : (x, (h0, c0)) ---> output : (x, (hn, cn))
+        x, _ = self.lstm(x)
+        x = x[:, -1, :] # (32, 10) = (batch_size, hidden_dim)
+        x = self.fc(x) # (32, 10) -> (32,5)= (batch_size, output_dim)  # Linear Regression
+        x = self.fc2(self.relu(x)) # (32,5) -> (32,1) # non-Linear Regression
+        ## fc2에 relu를 안씌우는 이유 => 그러면 예측값으로 음수를 가질 수 없다.
+
+        ###### 분류 시 변경 ######
+        # x = self.sigmoid(x)  # 1차원, Logistic Regression
+        # x = self.softmax(x)  # 2차원 이상, Logistic Regression
+        # x = x.view(-1, ) # make 2d tensor to 1d tensor.
+        ###### 분류 시 변경 ######
+
+        return x
+        # return x, (hn, cn)
+```
+
+
+```python
+tX, ty = next(iter(trainloader))
+tX.shape, ty.shape # (batch_size, seq_len, input_dim) # (N, L, H_in)
+```
+
+
+```python
+# 설정값
+input_dim = 4
+hidden_dim = 10
+output_dim = 1
+learning_rate = 1e-5
+n_epochs = 10000
+n_layers = 1
+```
+
+
+```python
+# define model
+model = LSTM(input_dim=input_dim,
+             hidden_dim=hidden_dim,
+             seq_len=seq_length,
+             output_dim=output_dim,
+             n_layers=n_layers).to(device)
+model
+```
+
+
+```python
+from torchinfo import summary
+summary(model)
+```
+
+**6. Loss 줄이기**
+
+
+
+```python
+# regression
+criterion = nn.MSELoss()   ## 회귀 시 Loss
+#criterion = nn.BCELoss()  ## 분류 시 Loss  # for binary classification
+optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+```
+
+
+```python
+# title 기본 제목 텍스트
+from tqdm.auto import tqdm
+
+## training 함수 구현 ##
+# 1. epoch당 avg_loss
+# 2. early stopping 구현 --> validation loss를 계산해야됨 --> validation loss가 얼마 이상 떨어지지 않을 때 stop하기.
+#                                                         --> 모델이 작을 때는 epoch 단위로 (epoch 당 validation의 avg_loss가 "tol(e.g. 1e-6 : 얼마나 참을거냐) * n번(patience : 몇번 참을거냐)" 이상 떨어지지 않을 때)
+#                                                         --> 모델이 클 때는 iteration 단위로
+# 3. loss graph 출력
+
+best_val_loss = 123456789.0 # worst value를 넣어놔야 됨
+tol = 1e-6 # 얼마나 참을거냐
+patience = 5 # 몇 번 참을거냐
+patience_count = 0 # 참은 횟수 => patience보다 커지면 early stopping
+
+# loss graph 출력을 위함
+train_losses = []
+val_losses = []
+epoch_end = 0
+
+for epoch in tqdm(range(n_epochs)):
+    train_loss = 0.0 # train_loss의 평균을 구하기 위함
+    val_loss = 0.0 # val_loss의 평균을 구하기 위함
+
+    # training
+    model.train() #  model.eval()에서 다시 training mode로 바꿔줌
+    for idx, data in enumerate(trainloader):
+        X, y = data[0].to(device), data[1].to(device)
+        outputs = model(X)
+        loss = criterion(outputs, y)
+
+        optimizer.zero_grad() # backprop할 때, gradient를 초기화 해줌
+        loss.backward()
+        optimizer.step()
+
+        train_loss = train_loss + loss.item()
+
+    train_loss = train_loss / len(trainloader) # epoch 당 train_loss의 평균
+    train_losses.append(train_loss)
+
+    # 1000번 마다 찍기
+    if (epoch % 1000) == 0:
+        print(f"Epoch : {epoch} ---> Train Loss : {train_loss:.4f}")
+
+
+    # validation
+    model.eval() # predict mode로 바뀜 ==> backprop을 하지 않는 모드
+                # dropout, batchnorm 같은 train/predict에서 다르게 동작하는 모듈을 전환해주는 함수.)
+    with torch.no_grad(): # locally disabling gradient computation = 이걸 써줘야 gradient update를 안해준다!
+                            # 즉, model.eval()과 with torch.no_grad() 둘 다 써줘야됨
+        for idx, data in enumerate(testloader):
+            # 원래는 train 데이터에서 validation을 잘라서 써야되는데... 여기서는 그냥 test 데이터에서 해봄
+            # (시계열데이터에서 정석) test의 기간만큼 validation을 train에서 잘라서 validation loss를 계산하기
+            X, y = data[0].to(device), data[1].to(device)
+            outputs = model(X)
+            loss = criterion(outputs, y)
+            val_loss = val_loss + loss.item()
+        val_loss = val_loss / len(testloader)
+        val_losses.append(val_loss)
+
+        # 1000번 마다 찍기
+        if (epoch % 1000) == 0:
+            print(f"Epoch : {epoch} ---> Validation Loss : {val_loss:.4f}")
+
+    # check best : best인지 아닌지 확인
+    if best_val_loss - val_loss > tol:
+        best_val_loss = val_loss
+        print(f"Epoch : {epoch} ---> Best Validation Loss : {best_val_loss:.4f}")
+        patience_count = 0
+    else:
+        patience_count += 1
+
+    if patience_count > patience:
+        print(f"Early stopping at {epoch:4d} epoch.")
+        epoch_end = epoch
+        break
+```
+
+
+```python
+plt.figure(figsize=(10, 4))
+sns.lineplot(x=list(range(epoch_end+1)), y=train_losses)
+plt.figure(figsize=(10, 4))
+sns.lineplot(x=list(range(epoch_end+1)), y=val_losses)
+```
+
+**7. 예측 데이터 시각화**
+
+
+
+```python
+# scaler한 것을 원본으로 만드는 방법
+original_df = scaler.inverse_transform(df)
+original_df = pd.DataFrame(data=original_df, columns=df.columns, index=df.index)
+original_df
+```
+
+
+```python
+# test데이터 예측 하기
+predictions = []
+
+model.eval()
+with torch.no_grad():
+    for data in testloader:
+        X, y = data[0].to(device), data[1].to(device)
+        outputs = model(X)
+        predictions = predictions + outputs.to('cpu').view(-1, ).tolist()
+
+predictions
+```
+
+
+```python
+## 예측한 test 데이터를 inverse scaling 하기
+# close의 min, max
+y_min, y_max = scaler.data_min_[-1], scaler.data_max_[-1]
+
+# min-max scaling
+# x' = x - min / max-min
+# x = x' * (max-min) + min
+y = [int(_y *(y_max-y_min)+y_min) for _y in predictions]
+y
+```
+
+
+```python
+# plot predictions
+plt.figure(figsize=(12, 4))
+sns.lineplot(data=original_df, x=original_df.index, y='Close', errorbar=None, label="True") # 실제 데이터 plot
+sns.lineplot(x=X_test[seq_length:].index, y=y, errorbar=None, label="Pred")
+plt.show()
+```
