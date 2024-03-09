@@ -155,45 +155,40 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 </figure>
 
     - ✅ **Inputs** : $x_1 ... x_n$, 입력값들.
-
+    
     - ✅ **Weights** : $w_1 ... w_n$, 가중치값들.
-
+    
     - ✅ **Bias** : $b$, 편향값.
         - 인공 뉴런의 출력을 조정하며, 특히 인공 뉴런이 얼마나 쉽게 활성화되는지를 결정하는 요소
         - 인공 뉴런의 활성화 임계값을 조정하는 역할을 함
         - 편향이 크면 인공 뉴런은 입력에 대해 덜 민감해지고, 편향이 작으면 더 민감해짐
         - 인공신경망이 데이터의 복잡한 패턴을 더 잘 잡아낼 수 있게 도와주는 역할
         -  역전파 알고리즘을 통해 가중치와 함께 학습됨
-
     - ✅ **Sum** : $x_1w_1 + ... + x_nw_n + b$, Linear Model.
-
+    
     - ✅ **Activation Function** : $f(x)$, Sum값이 x값으로 들어옴, 활성함수.
-
         - 주요 목적은 비선형성(non-linearity)을 인공 신경망에 도입하는 것.
-
         - 활성화 함수는 또한 신경망의 출력 값을 특정 범위로 조절.
-
         - 인공 신경망의 각 뉴런에서 입력 값과 가중치의 곱을 합산한 후(가중 합), 그 결과에 적용.
-
         - 대표적인 활성화 함수로는 시그모이드, ReLU, 하이퍼볼릭 탄젠트
         
         - Sigmoid
-        <figure style="text-align: center;">
-            <img src="https://mlnotebook.github.io/img/transferFunctions/sigmoid.png" width="300" height="300">
-            <figcaption style="font-size: 10px; color: gray;">출처) https://dacon.io/en/forum/406091</figcaption>
-        </figure>
+<figure style="text-align: center;">
+    <img src="https://mlnotebook.github.io/img/transferFunctions/sigmoid.png" width="300" height="300">
+    <figcaption style="font-size: 10px; color: gray;">출처) https://dacon.io/en/forum/406091</figcaption>
+</figure>
         
         - ReLU
-        <figure style="text-align: center;">
-            <img src="https://blog.kakaocdn.net/dn/vgJna/btqQzRGmwcO/TK3KTMlz4CYag8rBTKfYkK/img.png" width="300" height="300">
-            <figcaption style="font-size: 10px; color: gray;">출처) https://limitsinx.tistory.com/40</figcaption>
-        </figure>
+<figure style="text-align: center;">
+    <img src="https://blog.kakaocdn.net/dn/vgJna/btqQzRGmwcO/TK3KTMlz4CYag8rBTKfYkK/img.png" width="300" height="300">
+    <figcaption style="font-size: 10px; color: gray;">출처) https://limitsinx.tistory.com/40</figcaption>
+</figure>
         
         - 하이퍼볼릭 탄젠트(tanh)
-        <figure style="text-align: center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Hyperbolic_Tangent.svg/2560px-Hyperbolic_Tangent.svg.png" width="300" height="300">
-            <figcaption style="font-size: 10px; color: gray;">출처) https://ko.m.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC:Hyperbolic_Tangent.svg</figcaption>
-        </figure>
+<figure style="text-align: center;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Hyperbolic_Tangent.svg/2560px-Hyperbolic_Tangent.svg.png" width="300" height="300">
+    <figcaption style="font-size: 10px; color: gray;">출처) https://ko.m.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC:Hyperbolic_Tangent.svg</figcaption>
+</figure>
 
     - ✅ **Output** : $\hat{y}$, 예측값
 
@@ -238,13 +233,9 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 </figure>
 
     - 딥러닝에서 **다중 클래스 분류 문제**에서 주로 사용되는 활성화 함수(Activation Function)
-
     - 모델의 출력을 클래스별 확률 분포로 변환하는 역할
-
     - Softmax function은 **입력값을 지수 함수(exp)로 변환**하고, **모든 클래스에 대한 지수 함수 값의 합으로 나누어** 각 클래스의 확률을 계산
-
     - Softmax function을 통해 각 클래스의 확률을 계산하면, **가장 확률이 높은 클래스를 선택할 수 있음**
-
     - Softmax function을 통과한 모든 output 값들의 총합은 1이됨
 
 - 🔥 Cross Entropy
