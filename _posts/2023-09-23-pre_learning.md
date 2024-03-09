@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "머신러닝 시작 전 알아두어야 할 것들"
+title:  "머신러닝 시작 전 알아두어야 할 개념"
 categories: machinelearning
 tag: [machinelearning, concept]
 toc: true
