@@ -106,7 +106,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 
 
-## Vector
+## 🔥 Vector
 
 ### 벡터란?
 - 벡터란? 크기와 방향을 가진 물리량.
@@ -134,7 +134,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 
 
-## Vector Space
+## 🔥 Vector Space
 
 ### 차원이란?
 - 1차원 : 선
@@ -151,23 +151,23 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 <br>🔥 실수는 또 다른 말로 스칼라라고 한다.
 <br>🔥 스칼라 c와 n차원 벡터 $\vec{x} = (x_1,...,x_n)$에 대해 그 곱을 $c\vec{x} = (cx_1,...,cx_n)$ 으로 정의한다.
 
-#### [선형결합]
+#### ▶ [선형결합]
 - 스칼라와 벡터들의 곱들을 합한 형태를 말함.
 <br> 스칼라 $c_1, c_2, ... , c_n$과 벡터 $\vec{x}_1,\vec{x}_2, ... , \vec{x}_n$
 <br> ➡ $c_1\vec{x}_1 + c_2\vec{x}_2 + ... + c_n\vec{x}_n$을 말함.
 
-#### [부분공간]
+#### ▶ [부분공간]
 - 벡터공간의 부분공간이란 벡터공간의 공집합이 아닌 부분집합으로 원소들 사이의 선형결합이 여전히 부분집합에 속하는 경우.
 - 아래의 두 성질을 만족하는 공간을 뜻함.
 <br>1) $\vec{x}$와 $\vec{y}$가 부분공간에 속하면 그들의 합 $\vec{x}+\vec{y}$도 부분공간에 속한다.
 <br>2) 부분공간에 속하는 $\vec{x}$와 임의의 스칼라 c를 곱한 $c\vec{x}$도 여전히 부분공간에 속한다.
 
-#### [열공간, null공간]
+#### ▶ [열공간, null공간]
 - 행렬 A의 ***열공간***이란 행렬 A의 각 열들의 선형 결합으로 이루어진 공간
 - 행렬 방정식 $A\vec{x} = \vec{0}$의 해들의 집합은 벡터 공간을 이루며 이를 ***null공간***이라고 부른다.
 
 
-## Machine Learning model과 Statistical Model의 차이점
+## 🔥 Machine Learning model과 Statistical Model의 차이점
 
 |구분|머신러닝 모델|통계 모델|
 |---|---|---|
@@ -177,7 +177,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 |일반화및해석가능성|- "블랙박스"로 볼 수 있는 알고리즘이 많아서 해석하기 어려울 수 있음|- 과학 연구나 실험에서 현재 데이터셋에 대해 해석 가능한 결과와 결론을 도출하는 것이 중요<br><br>- 통계적 모델은 파라미터의 추정치와 그 불확실성을 제공하며, 이를 통해 변수 간의 관계를 해석|
 
 
-## Machine Learning model과 Deep Learning model의 차이점
+## 🔥 Machine Learning model과 Deep Learning model의 차이점
 
 |구분|머신러닝 모델|딥러닝 모델|
 |---|---|---|
@@ -189,23 +189,23 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 
 
 
-## Machine Learning task의 정의(classification vs regression vs clustering)
+## 🔥 Machine Learning task의 정의(classification vs regression vs clustering)
 
 ### Machine Learning task
 ![Machine Learning task](https://miro.medium.com/v2/resize:fit:720/0*UsO539Yis8JPIVLa)
 <br>[이미지 출처) https://miro.medium.com/v2/resize:fit:720/0*UsO539Yis8JPIVLa](https://miro.medium.com/v2/resize:fit:720/0*UsO539Yis8JPIVLa)
 
-#### 1) 지도학습(Supervised Learning)
+#### ▶ 1) 지도학습(Supervised Learning)
 - 입력 변수(X)와 출력 변수(Y)의 관계를 모델링하는 작업.
 - Y는 사전에 알려진 정답 레이블(label).
 - 회귀(Regression)와 분류(Classification)가 이 범주에 속합니다.
 
-#### 2) 비지도학습(Unsupervised Learning)
+#### ▶ 2) 비지도학습(Unsupervised Learning)
 - 입력 변수(X)만 사용하여 데이터의 구조나 패턴을 찾는 작업.
 - 출력 변수(Y), 즉 정답 레이블은 제공되지 않습니다.
 - 클러스터링(Clustering), 차원 축소(Dimensionality Reduction), 연관 규칙 학습(Association Rule Learning) 등이 여기에 속합니다.
 
-#### 3) 강화학습(Reinforcement Learning)
+#### ▶ 3) 강화학습(Reinforcement Learning)
 - 에이전트(agent)가 환경과 상호작용하며 보상(reward)을 최대화하는 행동(action)을 학습하는 과제입니다.
 - 시행착오를 통해 학습하며, 어떤 행동이 장기적으로 가장 큰 보상을 가져올지를 배우는 것에 중점을 둡니다.
 >🔥 에이전트(Agent): 환경에서 행동을 수행하고 그 결과로서 보상과 새로운 상태 정보를 받는 주체입니다.
@@ -216,11 +216,9 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 <br>🔥 상태(State): 환경의 현재 조건 또는 에이전트의 관찰 결과를 의미합니다.
 - 게임(예: 알파고), 로봇 제어, 자원 관리, 자율 주행 등 다양한 분야에서 강화학습이 사용.
 
-
-
 ### Classification vs Regression vs Clustering
 
-#### 1) Classification(분류)
+#### ▶ 1) Classification(분류)
 - 지도 학습(Supervised Learning)의 한 유형으로, 입력 데이터를 두 개 이상의 고정된 범주나 클래스로 분류하는 작업입니다.
 - 스팸 메일 필터링(스팸인지 아닌지), 이미지 인식(이미지가 어떤 객체를 나타내는지) 등이 있습니다.
 - [다음과 같은 상황에서 사용]
@@ -231,7 +229,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - [알고리즘 종류]
 > 로지스틱 회귀(Logistic Regression), 나이브 베이즈(Naive Bayes), K-최근접 이웃(K-Nearest Neighbors), 서포트 벡터 머신(Support Vector Machines), 결정 트리(Decision Trees), 랜덤 포레스트(Random Forests), 그래디언트 부스팅(Gradient Boosting), 심층 학습(Deep Learning)
 
-#### 2) Regression(회귀)
+#### ▶ 2) Regression(회귀)
 - 지도 학습의 한 유형으로, 입력 데이터에 대한 연속적인 출력 값을 예측하는 작업입니다.
 - 주택 가격 예측(주어진 특성에 따른 집값), 주식 가격 예측 등이 회귀 문제에 해당합니다.
 - [다음과 같은 상황에서 사용]
@@ -241,7 +239,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - [알고리즘 종류]
 > 선형 회귀(Linear Regression), 로지스틱 회귀(Logistic Regression), 다항 회귀(Polynomial Regression), 릿지(Ridge Regression), 라소(Lasso Regression), 엘라스틱넷(ElasticNet), 서포트 벡터 머신(Support Vector Machines for regression, called SVR), 결정 트리(Decision Trees for regression), 랜덤 포레스트(Random Forests for regression) 등
 
-#### 3) Clustering(군집화)
+#### ▶ 3) Clustering(군집화)
 - 군집화는 비지도 학습(Unsupervised Learning)의 한 유형으로, 레이블이 없는 데이터 세트를 서로 다른 그룹 혹은 클러스터로 분할하는 것을 목표로 합니다.
 - 비슷한 특성을 갖는 데이터 포인트들을 같은 클러스터로 그룹핑합니다.
 - 고객 세분화(Customer Segmentation), 이미지 분할(Image Segmentation) 등에서 사용됩니다.
@@ -255,7 +253,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 > K-평균(K-Means), 계층적 군집 분석(Hierarchical Clustering), DBSCAN(Density-Based Spatial Clustering of Applications with Noise), 스펙트럴 군집(Spectral Clustering), 평균-시프트(Mean-Shift) 등
 
 
-## Multivariate function(다변수 함수)의 개념
+## 🔥 Multivariate function(다변수 함수)의 개념
 - 두 개 이상의 독립 변수를 입력으로 받는 함수를 말합니다.
 - 종종 고차원 데이터를 모델링하는 데 사용되며, 각 변수간의 복잡한 상호작용을 포착할 수 있습니다.
 - 다변수 함수는 여러 변수들 사이의 관계를 설명하는 데 사용됩니다.
@@ -265,7 +263,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 <br> ➡ 이 함수는 n차원 공간에서 각 점 $g(x_1, x_2,... x_n)$에서 원점까지의 거리 제곱을 계산
 
 
-## partial derivative(편미분)의 개념
+## 🔥 partial derivative(편미분)의 개념
     ⚡ 다변수 함수에서 한 변수에 대한 미분을 의미.
     ⚡ 다른 변수들은 상수로 간주되며 그 값이 변하지 않는다고 가정.
     ⚡ 편미분은 기울기(gradient), 자코비안(Jacobian), 해시안(Hessian) 등과 같이 벡터나 매트릭스 형태의 도함수(derivative)를 구하는데 사용.
@@ -284,7 +282,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 <br> 여기서는 x를 상수로 취급하고 y만 미분합니다. ${∂f \over ∂y} = 2x + 3y^2$
 
 
-## feature engineering이란?
+## 🔥 feature engineering이란?
     ⚡ 머신러닝 모델을 위한 데이터를 준비하는 과정.
     ⚡ 입력 데이터의 특성(Features)을 선택, 추출, 생성하여 머신러닝 알고리즘이 이해하고 사용할 수 있는 형태로 변환하는 작업을 포함.
 
@@ -296,7 +294,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 <br>🔥 Dimensionality Reduction: 많은 양의 차원(특성)으로 인해 발생할 수 있는 문제점('차원의 저주')를 해결하기 위해 차원 축소 방법이 사용됩니다.
 
 
-## Linear Classifier, Linear Regression 모델의 학습원리
+## 🔥 Linear Classifier, Linear Regression 모델의 학습원리
 
 ### Linear Classifier
     ⚡ 입력 특성의 선형 조합을 기반으로 클래스를 예측하는 분류 모델.
@@ -342,7 +340,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 <br><br> 5) 모델 검증 및 튜닝: 학습된 모델을 검증 데이터셋에 적용하여 예측 성능을 평가합니다. 필요한 경우 하이퍼파라미터를 조정하거나, 모델의 복잡도를 변경하여 모델을 튜닝합니다.
 
 
-## Decision Tree(CART) 모델의 학습원리
+## 🔥 Decision Tree(CART) 모델의 학습원리
 
 ### Decision Tree란?
     ⚡ 지도 학습 알고리즘 중 하나로, 데이터를 분석하여 이들 사이에 존재하는 패턴을 예측 가능한 규칙들의 조합으로 나타내는데 사용.
@@ -370,7 +368,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 <br> 🔥 예측 및 평가: 학습된 CART 모델을 사용하여 새로운 입력값에 대한 예측 결과를 도출하고, 해당 결과와 실제 출력 값을 비교하여 모델의 성능을 평가합니다.
 
 
-## sklearn의 fit, predict 함수 사용법과 의미 이해하기
+## 🔥 sklearn의 fit, predict 함수 사용법과 의미 이해하기
 
 ### sklearn
     ⚡ 대표적인 머신러닝 라이브러리 중 하나.

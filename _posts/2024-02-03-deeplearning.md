@@ -86,7 +86,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - 2) 미래의 결과를 예측하고 싶다.
     - 3) 미래의 가능성을 예측하고 싶다.
     - 4) 미래의 수요와 공급을 예측하고 싶다.
-    - 결론) 시계열 데이터 분석과 이에 맞는 AI 모델을 공부하자
+    - re) 시계열 데이터 분석과 이에 맞는 AI 모델을 공부!
 
 1. 컴퓨터 비전 (X)
     - CNN
@@ -119,6 +119,7 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - 액터-크리틱 (Actor-Critic)
     - 딥 강화학습 알고리즘 (Deep Reinforcement Learning from Human Demonstrations, DQfD)
 
+
 # ⭐ 1. 딥러닝 이란?
 - Machine Learning + Deep Neural Network
 - Machine Learning의 train/test, parametric learning, weight update의 개념을 그대로 가지고 감
@@ -144,23 +145,28 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - Neuron (신경망)
 <figure style="text-align: center;">
     <img src="https://miro.medium.com/v2/resize:fit:2902/format:webp/1*hkYlTODpjJgo32DoCOWN5w.png" width="500" height="300">
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://towardsdatascience.com/the-concept-of-artificial-neurons-perceptrons-in-neural-networks-fab22249cbfc</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://towardsdatascience.com/the-concept-of-artificial-neurons-perceptrons-in-neural-networks-fab22249cbfc</figcaption>
 </figure>
 
 - Artificial Neuron (인공신경망)
 <figure style="text-align: center;">
     <img src="https://lanstonchu.files.wordpress.com/2021/03/cell.jpeg" width="500" height="300">
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://lanstonchu.wordpress.com/2021/09/06/human-neuron-vs-artificial-neuron-similarities-and-discrepancies/</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://lanstonchu.wordpress.com/2021/09/06/human-neuron-vs-artificial-neuron-similarities-and-discrepancies/</figcaption>
 </figure>
+
     - ✅ **Inputs** : $x_1 ... x_n$, 입력값들.
+
     - ✅ **Weights** : $w_1 ... w_n$, 가중치값들.
+
     - ✅ **Bias** : $b$, 편향값.
         - 인공 뉴런의 출력을 조정하며, 특히 인공 뉴런이 얼마나 쉽게 활성화되는지를 결정하는 요소
         - 인공 뉴런의 활성화 임계값을 조정하는 역할을 함
         - 편향이 크면 인공 뉴런은 입력에 대해 덜 민감해지고, 편향이 작으면 더 민감해짐
         - 인공신경망이 데이터의 복잡한 패턴을 더 잘 잡아낼 수 있게 도와주는 역할
         -  역전파 알고리즘을 통해 가중치와 함께 학습됨
+
     - ✅ **Sum** : $x_1w_1 + ... + x_nw_n + b$, Linear Model.
+
     - ✅ **Activation Function** : $f(x)$, Sum값이 x값으로 들어옴, 활성함수.
         - 주요 목적은 비선형성(non-linearity)을 인공 신경망에 도입하는 것.
         - 활성화 함수는 또한 신경망의 출력 값을 특정 범위로 조절.
@@ -169,42 +175,51 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
         - Sigmoid
         <figure style="text-align: center;">
             <img src="https://mlnotebook.github.io/img/transferFunctions/sigmoid.png" width="300" height="300">
-            <figcaption style="font-size: 0.1em; color: gray;">출처) https://dacon.io/en/forum/406091</figcaption>
+            <figcaption style="font-size: 10px; color: gray;">출처) https://dacon.io/en/forum/406091</figcaption>
         </figure>
         - ReLU
         <figure style="text-align: center;">
             <img src="https://blog.kakaocdn.net/dn/vgJna/btqQzRGmwcO/TK3KTMlz4CYag8rBTKfYkK/img.png" width="300" height="300">
-            <figcaption style="font-size: 0.1em; color: gray;">출처) https://limitsinx.tistory.com/40</figcaption>
+            <figcaption style="font-size: 10px; color: gray;">출처) https://limitsinx.tistory.com/40</figcaption>
         </figure>
         - 하이퍼볼릭 탄젠트(tanh)
         <figure style="text-align: center;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Hyperbolic_Tangent.svg/2560px-Hyperbolic_Tangent.svg.png" width="300" height="300">
-            <figcaption style="font-size: 0.1em; color: gray;">출처) https://ko.m.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC:Hyperbolic_Tangent.svg</figcaption>
+            <figcaption style="font-size: 10px; color: gray;">출처) https://ko.m.wikipedia.org/wiki/%ED%8C%8C%EC%9D%BC:Hyperbolic_Tangent.svg</figcaption>
         </figure>
 
     - ✅ **Output** : $\hat{y}$, 예측값
 
 ## 2) Multi-Layer Perceptron
+
 - 훌륭한 non-linear 모델
+
 - 인공 신경망의 한 종류로, 입력층, 은닉층, 출력층의 세 부분으로 구성
+
 - 세 부분은 모두 인공 뉴런(또는 노드)으로 이루어져 있으며, 각 뉴런은 다른 뉴런과 연결
 <figure style="text-align: center;">
-    <img src="https://www.dtreg.com/uploaded/pageimg/MLFNwithWeights.jpg" width="500" height="300">
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://ailephant.com/glossary/multilayer-perceptron/</figcaption>
+    <img src="https://www.dtreg.com/uploaded/pageimg/MLFNwithWeights.jpg" width="500" height="300" alt="None">
+    <figcaption style="font-size: 10px; color: gray;">출처) https://ailephant.com/glossary/multilayer-perceptron/</figcaption>
 </figure>
+
 - 입력층(Input Layer): 입력 데이터가 신경망으로 들어오는 부분
+
 - 은닉층(Hidden Layer)
     - 입력층과 출력층 사이에 위치한 층으로, 하나 이상의 은닉층이 존재할 수 있음
     - 은닉층의 노드는 입력층의 데이터를 받아 처리하고, 그 결과를 다음 층으로 전달
+
 - 출력층(Output Layer)
     - 신경망이 최종적으로 예측하거나 분류를 수행하는 부분
     - 출력층의 노드 수는 문제의 종류(회귀, 이진 분류, 다중 클래스 분류 등)에 따라 달라짐
 
 ## 3) Feed-Forward
+
 - = inference
+
 - 인공 신경망에서 정보가 입력층에서 출력층으로 단방향으로 전달되는 과정
 
 ## 4) output, loss funtion
+
 1. 회귀
 - 🔥 평균 제곱 오차(Mean Squared Error, MSE)
     - 회귀 문제에서는 평균 제곱 오차를 주로 사용
@@ -216,8 +231,9 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - 🔥 Softmax Funtion
 <figure style="text-align: center;">
     <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FQGFKh%2FbtqPQtew8NG%2FP5e54TRwt9fZqmXi55866k%2Fimg.jpg" width="300" height="200">
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://limitsinx.tistory.com/36</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://limitsinx.tistory.com/36</figcaption>
 </figure>
+
     - 딥러닝에서 **다중 클래스 분류 문제**에서 주로 사용되는 활성화 함수(Activation Function)
     - 모델의 출력을 클래스별 확률 분포로 변환하는 역할
     - Softmax function은 **입력값을 지수 함수(exp)로 변환**하고, **모든 클래스에 대한 지수 함수 값의 합으로 나누어** 각 클래스의 확률을 계산
@@ -228,20 +244,24 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - 딥러닝에서 **주로 분류 문제**에서 사용되는 손실 함수(Loss Funtion)
     - 모델의 출력과 실제 레이블 사이의 차이를 측정하여 모델을 학습시키는 데 사용
     - **출력 확률 분포와 실제 레이블의 분포 사이의 차이를 측정**
+
 <figure style="text-align: center;">
     <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbDAn5H%2FbtrvlyHcw8i%2FTVK9WlZemCBN85qKKOIR21%2Fimg.png" width="300" height="200">
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://lcyking.tistory.com/70</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://lcyking.tistory.com/70</figcaption>
 </figure>
+
 <figure style="text-align: center;">
     <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBnF3j%2Fbtrvpa0SZK4%2FhajdvXgTuzFyl1YGHaoVx0%2Fimg.png" width="300" height="200">
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://lcyking.tistory.com/70</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://lcyking.tistory.com/70</figcaption>
 </figure>
+
     - 공식 : $H(p,q) = -∑_{i=1}^{n}p(x_i)log(q(x_i))$
     - $p(x_i)$ = 실제 예측 확률 분포, Softmax Function를 사용하여 나온 확률 분포 값을 one-hot encoding한 값
         - [0, 1, 0, 0, 0]
     - $q(x_i)$ = 계산한 예측 확률 분포, Softmax Function를 사용하여 나온 확률 분포 값
         - [0.02, 0.90, 0.05, 0.01, 0.02]
     - $CE = -(0ˣlog(0.02) + 1ˣlog(0.90) + 0ˣlog(0.05) + 0ˣlog(0.01) + 0ˣlog(0.02)) = 0.1053$
+    
     <figure style="text-align: center;">
         <img src="https://i.namu.wiki/i/NE-z84UY1NUg_ASi6ExcveUWxeoWJJHpybv2gY5frfww_fqLLwjYnh_fPvgRXgAcVptAek0PX15SkexkW5e7OA.webp" width="300" height="200">
     </figure>
@@ -258,8 +278,11 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
     - Cross-Entropy Loss를 사용
 
 ## 5) back propagation
+
 - 손실 함수의 결과를 이용하여 각 층의 가중치와 편향을 업데이트
+
 - 오차를 역으로 전파하여 각 층의 가중치에 대한 변화량을 계산하고, 경사 하강법(Gradient Descent)을 사용하여 가중치를 조정
+
 - 체인룰(chain rule)을 사용하여 각 층의 가중치와 편향에 대한 기울기를 계산
     - 체인룰 이란, $F=f(g(x))=f∘g$ 에서
     - 1) x가 변화했을 때 함수 g(x)가 얼마나 변하는 지 알 수 있음 (미분이 가능하므로)
@@ -275,8 +298,9 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
 - [설명]
 <figure style="text-align: center;">
     <img src="https://i0.wp.com/analyticsarora.com/wp-content/uploads/2021/09/Understand-The-Backpropagation-Algorithm-Interview-Question.png?resize=800%2C600&ssl=1" width="500" height="300">
-    <figcaption style="font-size: 0.1em; color: gray;">출처) https://analyticsarora.com/8-unique-machine-learning-interview-questions-on-backpropagation/</figcaption>
+    <figcaption style="font-size: 10px; color: gray;">출처) https://analyticsarora.com/8-unique-machine-learning-interview-questions-on-backpropagation/</figcaption>
 </figure>
+
     - 각 가중치의 Error 값에 대한 기여도 = $ {∂E} \over {∂W}$ = Error를 가중치로 편미분한 값
     - 가중치(W)의 업데이트는 기여도에 Learning Rate 값을 곱한 값을 빼준다.
 
@@ -299,3 +323,832 @@ use_math: true # mathjax-support.html을 사용할건지(라텍스 수식 사용
   - input 데이터 개수 : 10,000이라고 가정
   - batch_size : 100이라고 가정
   - 그렇다면, 1epoch = 10,000 / 100 = 100 iterations = weight update 횟수
+
+# ⭐ 2. 딥러닝 알고리즘
+
+## 0) MLP
+### ① TabNet
+
+## 1) CNN
+- CNN (Convolutional Neural Network)
+- 이미지 인식, 컴퓨터 비전 등에서 주로 사용되는 신경망 구조
+- 합성곱층(Convolutional Layer), 풀링층(Pooling Layer), 완전 연결층(Fully Connected Layer)으로 구성
+<figure style="text-align: center;">
+    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FclZ8Xf%2FbtrRBKTo9QN%2FnWkmTcac5HA2JE4SsQ6Ow1%2Fimg.png" width="500" height="300">
+    <figcaption style="font-size: 10px; color: gray;">출처) https://medium.com/swlh/fully-connected-vs-convolutional-neural-networks-813ca7bc6ee5</figcaption>
+</figure>
+
+- 🔥 Convolutional Layer
+    - Feature를 추출하는 Layer이기 때문에 Embedding Layer라고 할 수 있음
+    - Filter(= Kernel)
+        - 필터는 합성곱층에서 입력 이미지에 적용되는 작은 크기의 행렬
+        - 일반적으로 정사각형으로 설정
+        - 합성곱 연산을 통해 입력 이미지와 곱셈 및 합산되어 특징 맵을 생성
+    - Stride
+        - 필터가 입력 이미지 위를 이동하는 간격을 의미
+        - 큰 스트라이드는 특징 맵의 크기를 줄이고 계산량을 감소시킴
+    - Padding
+        - 패딩은 입력 이미지 주변에 추가적인 값(일반적으로 0)을 채우는 기법
+        - 패딩을 사용하면 입력 이미지의 가장자리에 있는 픽셀들도 충분한 고려를 받을 수 있음
+        - [사용목적]
+        <br> 1) 출력 특징 맵의 크기를 유지하기 위해 사용
+        <br> 2) 경계 픽셀의 정보를 보존하기 위해 사용
+    - Feature Map
+        - 합성곱층(Convolutional Layer)을 통과한 결과로 생성되는 2D 배열
+        - H = ((입력 이미지 높이 + 2 * Padding - Filter의 높이) / Stride) + 1
+        - W = ((입력 이미지 너비 + 2 * Padding - Filter의 너비) / Stride) + 1
+        - Feature Map의 채널 수 = 사용하는 필터의 개수.
+        - (중요) 소수점 아래는 버림
+    - 합성곱 연산 과정
+        <figure style="text-align: center;">
+            <img src="https://www.insilicogen.com/blog/attach/1/1379830475.png" width="350" height="250">
+            <figcaption style="font-size: 10px; color: gray;">출처) https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/</figcaption>
+        </figure>
+
+        - 입력 이미지와 필터(Filter)를 겹쳐가며 요소별 곱셈을 수행.
+        - 필터를 일정한 간격(Stride)만큼 이동시켜 전체 입력 이미지에 대해 합성곱 연산을 반복.
+        - 필터의 이동에 따라 새로운 위치에서 새로운 특징 맵(Feature Map)이 생성.
+        
+- 🔥 Pooling Layer
+
+    - Feature를 추출하는 Layer이기 때문에 Embedding Layer라고 할 수 있음
+
+    - [사용목적]
+
+    <br> 1) 풀링 연산을 통해 특징 맵의 크기를 줄여 계산량을 감소
+
+    <br> 2) 특징 맵 내에서 특정 패턴이 나타나는 위치를 고려하지 않고 가장 중요한 특징만 강조하여 위치 이동에 덜 민감한 특징을 추출
+
+    <br> 3) 작은 변화나 잡음에 민감하지 않도록 하여 특징의 일반화 능력을 향상
+
+    - **최대 풀링(Max Pooling)**이나 **평균 풀링(Average Pooling)**을 사용하여 특징 맵의 부분 영역에서 가장 큰 값이나 평균 값을 추출
+
+    <figure style="text-align: center;">
+
+        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*BwNCDOi_0BF5Isrt.png" width="350" height="250">
+
+        <figcaption style="font-size: 0.1em; color: gray;">출처) https://medium.com/@miyachan84/%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks-5db5c7cb91dc</figcaption>
+
+    </figure>
+
+    - 출력 특징 맵의 크기 = ((입력 특징 맵의 크기 - 풀링 영역의 크기) / 스트라이드) + 1
+
+    - (중요) 소수점 아래는 버림
+
+
+
+- 🔥 FC(Fully-connected Layer)
+
+    - 풀링층(Pooling Layer)의 출력을 받아들여 분류 등의 작업을 수행
+
+    <br> (풀링층의 출력을 Flatten하여 쭉~ 펴줌)
+
+    - 이전 층의 모든 뉴런과 현재 층의 모든 뉴런이 연결되어 있는 구조
+
+    - 모든 입력 뉴런과 출력 뉴런 사이에 가중치가 존재하고, 모든 입력에 대해 가중치와 곱셈 연산을 수행한 후, 모든 결과를 더하여 출력을 계산
+
+    <figure style="text-align: center;">
+
+        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*VHOUViL8dHGfvxCsswPv-Q.png" width="350" height="250">
+
+        <figcaption style="font-size: 0.1em; color: gray;">출처) https://medium.com/swlh/fully-connected-vs-convolutional-neural-networks-813ca7bc6ee5</figcaption>
+
+    </figure>
+
+
+
+- 🔥 e.g. (계산해보기)
+
+<figure style="text-align: center;">
+
+    <img src="https://miro.medium.com/v2/resize:fit:1400/0*u8uSPvkagjmnxiJZ.jpeg" width="500" height="300">
+
+    <figcaption style="font-size: 0.1em; color: gray;">출처) https://medium.com/@miyachan84/%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks-5db5c7cb91dc</figcaption>
+
+</figure>
+
+
+
+    - 1) Input
+
+        - 입력 이미지(Input)가 흑백이미지 : 채널(Chennel) = 1
+
+        - 입력 이미지(Input)의 크기가 28x28x1(H x W x C)
+
+    - 2) Convolution - (1)
+
+        - 필터(Filter = Kernel)의 크기가 5
+
+        - 필터(Filter = Kernel)의 개수가 n1
+
+        - stride = 1, padding = 0
+
+        - ✅ 출력 Feature Map의 크기 = 24x24xn1(H x W x n1)
+
+            - H = ((28 + 2x0 - 5) / 1) + 1 = 23 + 1 = 24
+
+            - W = ((28 + 2x0 - 5) / 1) + 1 = 23 + 1 = 24
+
+            - C = Filter의 개수 = n1
+
+    - 3) Max-Pooling - (1)
+
+        - (2x2) Max-Pooling, stride = 2
+
+        - ✅ 출력 Feature Map의 크기 = 12x12xn1(H x W x n1)
+
+            - H = (24 - 2 / 2) + 1 = 11 + 1 = 12
+
+            - W = (24 - 2 / 2) + 1 = 11 + 1 = 12
+
+            - ((입력 특징 맵의 크기 - 풀링 영역의 크기) / 스트라이드) + 1
+
+    - 4) Convolution - (2)
+
+        - 필터(Filter = Kernel)의 크기가 5
+
+        - 필터(Filter = Kernel)의 개수가 n2
+
+        - stride = 1, padding = 0
+
+        - ✅ 출력 Feature Map의 크기 = 8x8xn2(H x W x n2)
+
+            - H = ((12 + 2x0 - 5) / 1) + 1 = 7 + 1 = 8
+
+            - W = ((12 + 2x0 - 5) / 1) + 1 = 7 + 1 = 8
+
+            - C = Filter의 개수 = n2
+
+    - 5) Max-Pooling - (1)
+
+        - (2x2) Max-Pooling, stride = 2
+
+        - ✅ 출력 Feature Map의 크기 = 4x4xn2(H x W x n2)
+
+            - H = (8 - 2 / 2) + 1 = 3 + 1 = 4
+
+            - W = (8 - 2 / 2) + 1 = 3 + 1 = 4
+
+    - 6) FC
+
+        - Flatten 해주기
+
+        - fully connected.
+
+        - Activation Function 적용.
+
+    - 7) Output
+
+        - 얻으려는 결과의 개수를 설정하여 얻음.
+
+    
+
+
+### ① ResNet
+
+- Residual Network
+
+- 2015년에 Kaiming He 등의 연구자들에 의해 소개
+
+- 이미지 분류, 객체 검출, 객체 분할 등 다양한 컴퓨터 비전 작업에 사용
+
+- Human Error(5.4%)를 돌파!
+
+- 주요 아이디어는 잔차 블록(Residual Block)
+
+    - Gradient Update가 잘 안되는 문제 발견!
+
+        - $W_2 ⬅ W_1 - ∇W×α$
+
+        - 가중치가 업데이트 될 때, $∇W$의 값은 계속 작아짐
+
+        - 게다가, α(Leaning Rate)를 계속 곱해주니까 W의 업데이트는 점점 잘 안됨
+
+        - ***Gradient Vanishing*** 문제 발생!!!
+
+    - Gradient 정보를 앞쪽까지 "잘" 전달해주자!
+
+        - Gradient가 skip connection을 통해 바로 전달
+
+        - H(x) - x를 잔차(residual) 라고 함
+
+        - input x에 대한 결과 H(x)에 x를 더한 형태로 구성
+
+        - 동일한 연산을 하고 나서 Input인 x를 더하는 것(Residual Block)과 더하지 않는 것(Plane layer)
+
+        <figure style="text-align: center;">
+
+            <img src="https://i.imgur.com/mHfZYPQ.png" width="350" height="200">
+
+            <figcaption style="font-size: 0.1em; color: gray;">출처) https://velog.io/@lighthouse97/ResNet%EC%9D%98-%EC%9D%B4%ED%95%B4</figcaption>
+
+        </figure>
+
+
+
+- ResNet34, ResNet50, ResNet101, ResNet152(3.5% 달성)
+
+    - 이것들은 Pretrained Model로 사용됨 = "Transfer Learning"
+
+    <figure style="text-align: center;">
+
+        <img src="https://pytorch.kr/assets/images/resnet.png" width="500" height="300">
+
+        <figcaption style="font-size: 0.1em; color: gray;">출처) https://pytorch.kr/hub/pytorch_vision_resnet/</figcaption>
+
+    </figure>
+
+
+
+-$...$
+
+
+## 2) RNN
+
+- 🔥 RNN 이란?
+
+<figure style="text-align: center;">
+
+    <img src="https://velog.velcdn.com/images%2Fyuns_u%2Fpost%2Fccbb28ea-fa08-4d23-804e-419e6f578e4b%2Fimage.png" width="700" height="200">
+
+    <figcaption style="font-size: 0.1em; color: gray;">출처) https://velog.io/@yuns_u/%EC%88%9C%ED%99%98-%EC%8B%A0%EA%B2%BD%EB%A7%9DRNN-Recurrent-Neural-Network</figcaption>
+
+</figure>
+
+
+
+    - RNN = Recurrent Neural Network
+
+    - 시퀀스 데이터(예: 문장, 시계열 데이터 등)를 처리하기 위해 설계된 신경망 구조
+
+    - 이전의 정보를 현재의 작업에 활용할 수 있는 능력을 가지고 있음
+
+    - 구성
+
+        - 타임 스탭(Time step, t), 입력층(input layer, $x_t$), 은닉층(hidden layer, $h_t$), 셀(cell), 출력층(output layer, $o_t$)
+
+    - 입력층(input layer)
+
+        - 주어지는 입력 데이터를 받는 층
+
+        - 각 시간 단위에서의 입력이 이 층으로 들어옴
+
+    - 은닉층(hidden layer)
+
+        - RNN에서 시퀀스 데이터의 특징을 추출
+
+        - 이전 시간 단위의 정보를 저장하는 역할
+
+        - ***은닉상태(hidden state)*** : 메모리 셀이 출력층 방향 또는 다음 시점인 t+1의 자신에게 보내는 값
+
+    - 셀(cell)
+
+        - 은닉층에서 활성화 함수를 통해 결과를 내보내는 역할을 하는 노드를 셀(cell)이라고 함
+
+        - 이전의 값을 기억하려고 하는 일종의 메모리 역할을 수행하므로 ***메모리 셀(RNN 셀)***이라고 표현
+
+    - 출력층(ouput layer)
+
+        - 최종적으로 출력되는 값을 제공하는 층
+
+        - 분류 작업에서는 소프트맥스 함수를 사용하여 클래스별 확률을 출력하는 층을 사용할 수 있음
+
+
+
+- 🔥 현재 시점(t)에서의 RNN 원리
+
+    - RNN은 은닉층(hidden layer)의 노드에서 활성화 함수(activation function, 'tanh 사용')를 통해 나온 결과값을 출력층 방향으로도 보내면서, 다시 은닉층 노드의 ***다음 계산의 입력***으로 보냄.
+
+    - 현재 시점 t에서의 메모리 셀이 갖고있는 값은 과거의 메모리 셀들의 값에 영향을 받은 것임
+
+    - t 시점의 메모리 셀은 t-1 시점의 메모리 셀이 보낸 ***은닉 상태값***을 t 시점의 은닉 상태 계산을 위한 입력값으로 사용    
+
+    - (1) 현재시점(t)에서의 은닉 상태값($h_t$), 출력값($y_t$)계산
+
+        <figure style="text-align: center;">
+
+            <img src="http://i.imgur.com/TIdBDTJ.png" width="500" height="300">
+
+            <figcaption style="font-size: 0.1em; color: gray;">출처) https://ratsgo.github.io/natural%20language%20processing/2017/03/09/rnnlstm/</figcaption>
+
+        </figure>
+
+
+
+        - 현재시점(t)에서 입력층의 가중치 $W_{xh}$
+
+        - 이전시점(t-1)의 은닉 상태값 $h_{t-1}$
+
+        - 이전시점(t-1)의 은닉 상태값을 위한 가중치 $W_{hh}$
+
+        - $h_t = tanh(W_{xh}×x_{t} + W_{hh}×h_{t-1} + b_{h})$
+
+        - $y_t = f(W_{hy}×h_{t} + b_{y})$
+
+
+
+    - (2) 현재시점(t)의 Input Vector($x_t$)의 차원을 d, 은닉상태의 크기를 $D_h$라고 하면 각 크기는?
+
+        <figure style="text-align: center;">
+
+            <img src="https://wikidocs.net/images/page/22886/rnn_image4_ver2.PNG" width="150" height="200">
+
+        </figure>
+
+        <figure style="text-align: center;">
+
+            <img src="https://wikidocs.net/images/page/22886/rnn_images4-5.PNG" width="500" height="180">
+
+            <figcaption style="font-size: 0.1em; color: gray;">출처) https://wikidocs.net/22886</figcaption>
+
+        </figure>
+
+
+
+        - $x_t$ : (d×1)
+
+        - $W_x$ : ($D_h$×d)
+
+        - $W_h$ : ($D_h$×$D_h$)
+
+        - $h_{t-1}$ : ($D_h$×1)
+
+        - $b$ : ($D_h$×1)
+
+        - $h_{t}$ : ($D_h$×1)
+
+
+
+- 🔥 BPTT(오차역전파, BackPropagation Through Time)
+
+    <figure style="text-align: center;">
+
+        <img src="http://i.imgur.com/XYDxsNs.png" width="600" height="400">
+
+    </figure>
+
+    <figure style="text-align: center;">
+
+        <img src="http://i.imgur.com/hEtvXnN.png" width="600" height="400">
+
+        <figcaption style="font-size: 0.1em; color: gray;">출처) https://www.goldenplanet.co.kr/our_contents/blog?number=857&pn=</figcaption>
+
+    </figure>
+
+        
+
+    - (최종) $dy_t$ = $ {σL} \over {σy_t}$
+
+    - $dW_{hy}$ = $h_t × dy_t$
+
+    - $dh_t$ = $W_{hy} × dy_t$
+
+    - $dh_{raw}$ = $(1-tanh^2(h_{raw})) × dh_t$, ($dh_t$ = ${σL} \over {σh_t}$)
+
+    - [행렬곱]
+
+        - ***$x_t$, $W_{xh}$, $h_{t-1}$, $W_{hh}$에서 일어남***
+
+        - $W_{xh} × dh_{raw}$
+
+        - $x_t × dh_{raw}$
+
+        - $W_{hh} × dh_{raw}$
+
+        - $h_{t-1} × dh_{raw}$
+
+    - ⭐ $h_{t-1}$
+
+        - (t-1시점 Loss) "$W_{hy} × dy_{t-1}$"과 함께
+
+        - (t시점에서 역전파된 값) "★" 이 역전파됨
+
+    - ⭐ 역전파 과정
+
+        - tanh 연산, + 연산, 행렬곱 연산이 일어남
+
+        - 행렬곱 연산 때문에! 기울기 소실, 기울기 폭발이 발생
+
+
+
+- 🔥 RNN의 한계점
+
+    - 1) 병렬화 불가능
+
+    <br> - 벡터가 순차적으로 입력
+
+    <br> - sequential 데이터 처리는 가능하게 해주지만,
+
+    <br> - GPU 연산의 장점인 병렬화가 불가능
+
+    
+
+    - 2) 기울기 폭발(exploding Gradient), 기울기 소실(Vanashing Gradient)
+
+    <br> - 역전파 과정에서 치명적인 문제 발생
+
+    <br> - 역전파 과정에서 곱해주는 값이 1미만일 때, n제곱이 된다면 역전파 정보가 거의 전달되지않음
+
+    <br> **= 기울기 소실**
+
+    <br> - 역전파 과정에서 곱해주는 값이 1초과일 때, n제곱이 된다면 역전파 정보가 거의 과하게전달
+
+    <br> **= 기울기 폭발**
+
+
+
+- 🔥 One to Many
+
+
+
+- 🔥 Many to One
+
+
+
+- 🔥 Many to Many
+
+    - seq2seq
+
+    - sos : start of sentense
+
+    - eos : end of sentense
+
+
+
+
+
+### ① LSTM
+
+- LSTM = Long Short-Term Memory
+
+- 장기 의존성(Long-Term Dependencies)을 학습하고 처리하는 능력을 강화시킨 신경망 구조
+
+- RNN의 그래디언트 소실(Vanishing Gradient) 문제를 해결하고, 긴 시퀀스 데이터에서도 장기 의존성을 효과적으로 학습할 수 있도록 설계
+
+<figure style="text-align: center;">
+
+    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F999F603E5ACB86A005" width="500" height="300">
+
+    <figcaption style="font-size: 0.1em; color: gray;">출처) https://dgkim5360.tistory.com/entry/understanding-long-short-term-memory-lstm-kr</figcaption>
+
+</figure>
+
+
+
+- 🔥 '셀 상태(cell state)'와 '게이트(gate)' 메커니즘
+
+    - 셀 상태(Cell State)
+
+    <figure style="text-align: center;">
+
+        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99CB87505ACB86A00F" width="500" height="200">
+
+    </figure>
+
+
+
+        - 셀 상태는 이전 시간 단위에서 현재 시간 단위로 전달되며, 장기적인 정보를 저장하는 역할
+
+        - [Cell State는 마치 컨베이어 벨트]
+
+            - $C_{t-1}$ ---------------------$C_t$---------------------$> $C_{t+1}$
+
+        - [Cell State는 두 번의 변화를 겪음]
+
+            <figure style="text-align: center;">
+
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F997589405ACB86A00C" width="500" height="200">
+
+            </figure>
+
+
+
+            - 망각게이트의 출력값($f_t$)은 곱하기
+
+            - 입력게이트의 출력값($i_t×\tilde{C_t}$)은 더하기
+
+            - $C_t = C_{t-1}×f_t + i_t×\tilde{C_t}$
+
+
+
+    - 망각 게이트(Forget Gate)
+
+    <figure style="text-align: center;">
+
+        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F9957DB445ACB86A021" width="500" height="200">
+
+    </figure>
+
+
+
+        - 셀 상태의 정보를 지울 것인지 말 것인지를 결정
+
+        - [Activation Function]
+
+            - Sigmoid 함수를 사용(0 ~ 1사이의 값을 가지게 됨)
+
+            - 0 : 정보를 지워버려라, 1 : 모든 정보를 보존해라
+
+        - [입력값]
+
+            - $h_{t-1}$ = (t-1) 시점의 출력값
+
+            - $x_t$ = (t) 시점의 입력값
+
+        - [출력값]
+
+        <br> ✅ $f_t = σ(W_{hf}h_{t-1} + W_{xf}x_t)$
+
+
+
+    - 입력 게이트(Input Gate)
+
+    <figure style="text-align: center;">
+
+        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99D969495ACB86A00B" width="500" height="200">
+
+    </figure>
+
+
+
+        - 들어오는 새로운 정보 중 어떤 것을 Cell State에 저장할 것인지 결정.
+
+            - 새롭게 기억해야 할 정보를 추가하자 ➡ tanh
+
+            - 새로운 기억 셀 안에서도 적절히 취사선택하자 ➡ sigmoid
+
+        - [Activation Fucntion]
+
+            - Sigmoid 함수 : 어떤 값을 업데이트할 지 정함
+
+            - tanh 함수 : 새로운 vector를 만듬
+
+        - [입력값]
+
+            - $h_{t-1}$ = (t-1) 시점의 출력값
+
+            - $x_t$ = (t) 시점의 입력값
+
+        - [출력값]
+
+        <br> ✅ $i_t = σ(W_{hi}h_{t-1} + W_{xi}x_t)$
+
+        <br> ✅ $\tilde{C_t} = tanh(W_{hc}h_{t-1} + W_{xc}x_t)$
+
+
+
+    - 출력 게이트(Output Gate)
+
+    <figure style="text-align: center;">
+
+        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99FB824C5ACB86A10D" width="500" height="200">
+
+    </figure>
+
+
+
+        - 현재 시간 단위의 출력을 얼마나 셀 상태와 관련시킬지를 결정하는 역할
+
+        - [Activation Function]
+
+            - Sigmoid 함수
+
+            - tanh 함수
+
+        - [입력값]
+
+            - $h_{t-1}$ = (t-1) 시점의 출력값
+
+            - $x_t$ = (t) 시점의 입력값
+
+            - $c_t$ = (t) 시점의 Cell State값
+
+        - [출력값]
+
+        <br> ✅  $O_t = σ(W_{ho}h_{t-1} + W_{xo}x_t)$
+
+        <br> ✅  (최종) $h_t = O_t×tanh(c_t)$
+
+
+
+- 🔥 LSTM의 역전파
+
+<figure style="text-align: center;">
+
+    <img src="https://qph.cf2.quoracdn.net/main-qimg-9c5235ffc1faf177cf155f4601836c74-pjlq" width="500" height="300">
+
+    <figcaption style="font-size: 10px; color: gray;">출처) https://www.quora.com/How-do-LSTMs-solve-the-vanishing-gradient-problem</figcaption>
+
+</figure>
+
+
+
+    - Cell State의 역전파
+
+        - ⨁ : 미분값을 건드리지 않고 그대로 흘려보냄
+
+        - ⨂ : 원소별 곱 ➡ (중요) 행렬곱이 아니다!
+
+
+
+- 🔥 Multi-Layer LSTM
+
+
+
+- 🔥 Bidirectional LSTM
+
+
+
+- $...$
+
+
+### ② Transformer
+
+
+
+## 3) Auto Encoder
+
+- 비지도학습.
+
+- 라벨링 없이도 입력 데이터의 밀집 표현을 학습할 수 있는 신경망.
+
+- 일반적으로 입력 데이터보다 훨씬 낮은 차원을 가지므로 차원 축소 혹은 시각화에 사용됨.
+
+- 밀집 표현을 학습하고 생성 모델로 활용.
+
+- 반드시 입력 변수의 수보다 은닉 노드의 수가 더 적은 은닉 층이 있어야함.
+
+    - 이층에서 정보의 축약이 이루어짐.
+
+
+
+- 🔥 활용방식
+
+    - 1) ***차원 축소***의 목적으로 AE를 학습시킨 뒤 Latent Vector를 다른 Machine Learning 모형의 Input으로 사용
+
+    - 2) 입력 정보와 AE의 출력 정보간 차이를 이용한 분석 (***이상상태 탐지***)
+
+
+
+- 🔥 Loss function
+
+    - $l(f(x)) = {{1} \over {2}} \sum_k{(\hat{x_k} - x_k)^2}$
+
+    - $\hat{x_k}$ : 추정된 나
+
+    - $x_k$ : 나
+
+
+
+- 🔥 Encoder, Decoder
+
+    - Encoder
+
+        - $h(x)$ = $g(a(x))$ = $sigm(b+Wx)$
+
+
+
+    - Decoder
+
+        - $\hat{x}$ = $o(\hat{a}(x))$ = $sigm(c + W×h(x))$
+
+
+
+- 🔥 한계점
+
+    - 입력에 대한 약간의 변형(Small Perturbations)에도 모델이 민감하게 반응함
+
+
+
+- 🔥 Convolutional Auto-Encoder
+
+    - 고려사항 : Decoder 학습 시 feature map의 크기를 어떻게 증가시킬 것 인가?
+
+    - Unpooling
+
+        - Max pooling 을 사용할 경우 해당 위치를 기억해 두었다가 그 "위치 정보"를 사용
+
+        - 기억해둔 위치에 값을 넣고 나머지 부분은 "0"으로 채운다.
+
+    - Transpose convolution
+
+
+
+- 🔥 RNN Auto-Encoder
+
+    - 순차 데이터를 복원하는 오토 인코더
+
+
+
+## 4) GAN
+
+- GAN = Generative Adversarial Network, 생성적 적대 신경망
+
+- 비지도학습
+
+- 초해상도, 이미지를 컬러로 바꾸기, 강력한 이미지 편집(간단한 스케치 등)
+
+- 밀집 표현을 학습하고 생성 모델로 활용
+
+
+## 5) 강화학습
+
+- 사전 정보가 전혀 없는, 즉 데이터가 전혀 주어지지 않는 제로베이스 상태에서 학습을 시작해서 스스로 최적의 알고리즘을 찾아내는 학습
+
+
+
+- 에이전트 (Agent)
+
+    - ex) 로봇
+
+    - 학습하는 시스템, 그 자체
+
+- 환경 (Enviorment)
+
+    - ex) 여러 지형
+
+    - 로봇이 학습해 나가야 하는 주변 환경
+
+    - 초기에 로봇은 환경에 대한 정보가 아무것도 없고, 점차 알아나가야한다.
+
+- 행동 (Action)
+
+    - ex) 로봇이 취하는 여러 행동
+
+    - 처음에는 아무 사전 학습이 되어있지 않을 때는 랜덤으로 매 순간의 행동을 선택할 수 있다.
+
+- 보상 (Reward)
+
+    - ex) 로봇이 한 행동에 대해서 받는 피드백
+
+    - 안전한 지형에 발을 딛었을 경우 보상으로 양(+)의 점수를 주고,
+
+    - 위험한 지형에 발을 딛었을 경우 음(-)의 패널티를 받도록 알고리즘을 짬
+
+- 정책 (Policy)
+
+    - ex) 로봇이 학습하는 전략
+
+    - '행동선택 -> 보상받기 -> 보상에 따라 행동 수정'의 과정을 거치면서, 보상이 최대화되는 행동의 일련 과정을 학습하게 됨
+
+    - 신경망 정책
+
+        - 관측을 입력으로 받고 실행할 행동을 출력함
+
+        - 각 행동에 대한 확률을 추정하고, 추정된 확률에 따라 랜덤하게 행동을 선택
+
+    - OpenAI짐
+
+        - 다양한 종류의 시뮬레이션 환경을 제공하는 툴킷
+
+    - 신용 할당 문제
+
+        - 에이전트가 보상을 받았을 때 어떤 행동 때문에 보상을 받은 것인지 정확히 알 수 없음
+
+
+### ① 정책 그레디언트
+
+- 높은 보상을 얻는 방향의 그래디언트를 따르도록 정책 파라미터를 최적화하는 알고리즘
+
+- 가장 있기 있는 것은 REINFORCE 알고리즘
+
+
+### ② 마르코프 연쇄
+
+- = Markov Chain
+
+- 메모리가 없는 확률 과정 (Stochastic Process)
+
+- 마르코프 결정 과정 (MDP : Markov Decision Process)
+
+- 벨만 최적 방정식 (Bellman Optimality Equation)
+
+
+
+
+
+- 시간차 학습 (TD 학습 : Temporal Difference Learning)
+
+
+### ③ Q-Learning
+
+- 전이 확률과 보상을 초기에 알지 못한 상황에서 Q-가치 반복 알고리즘을 적용한 것
+
+- 가치 반복 알고리즘 (Value Iteration Algorithm)
+
+- Q-가치 반복 알고리즘 (Q-Value Iteration Algorithm)
+
+- Q-Learning 알고리즘
+
+    - off-policy vs on-policy
+
+
+### ④ 심층 Q-Learning
+
+- Q-러닝의 주요 문제
+
+    - 많은 상태와 행동을 가진 대규모 (또는 중간규모)의 MDP에 적용하기 어렵다
+
+- Q-가치를 추정하기 위해 사용하는 DNN을 심층 Q-네트워크(DQN)라 함
+
+- 근사 Q-러닝을 위해 DQN을 사용하는 것을 심층 Q-러닝이라 함
